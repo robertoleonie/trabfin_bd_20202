@@ -1,6 +1,13 @@
 SET GLOBAL log_bin_trust_function_creators = 1;
 use vodan_br_bd;
 
+DROP TABLE if exists `tb_QuestionsType`;
+CREATE TABLE `tb_QuestionsType` (
+	`questionTypeID` int NOT NULL AUTO_INCREMENT,
+	`description` varchar(255) NOT NULL COMMENT '(pt-br) Descrição.\r\n(en) description.',
+	 PRIMARY KEY (`questionTypeID`)
+);
+
 ALTER TABLE `tb_Questions`
 	ADD FOREIGN KEY (`questionTypeID`) REFERENCES `tb_QuestionsType` (`questionTypeID`),
 	ADD FOREIGN KEY (`listTypeID`) REFERENCES `tb_ListOfValues` (`listTypeID`),
