@@ -1,12 +1,12 @@
 create
-    definer = root@`%` function VODAN_EXTRACT_TXT(objeto json, row int, tag varchar(255)) returns text
+    definer = root@`%` function VODAN_EXTRACT_TXT(objeto json, roww int, tag varchar(255)) returns text
 BEGIN
         #DECLARE info varchar(1000);
         DECLARE info TEXT CHARACTER SET utf8;
-	IF row IS NULL THEN 
+	IF roww IS NULL THEN 
 	        SET info = JSON_EXTRACT(objeto, CONCAT('$[' , tag, ']' ));
 	ELSE
-        	SET info = JSON_EXTRACT(objeto, CONCAT('$[', row, '].', tag ));
+        	SET info = JSON_EXTRACT(objeto, CONCAT('$[', roww, '].', tag ));
 	END IF;
 	SET info = JSON_UNQUOTE(info);
         IF info IS NULL THEN

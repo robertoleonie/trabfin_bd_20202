@@ -1,11 +1,11 @@
 create
-    definer = root@`%` function VODAN_EXTRACT_DEC(objeto json, row int, tag varchar(255)) returns decimal(13, 2)
+    definer = root@`%` function VODAN_EXTRACT_DEC(objeto json, roww int, tag varchar(255)) returns decimal(13, 2)
 BEGIN
         DECLARE info VARCHAR(128);
-	IF row IS NULL THEN 
+	IF roww IS NULL THEN 
 	        SET info = JSON_EXTRACT(objeto, CONCAT('$[' , tag, ']' ));
 	ELSE
-        	SET info = JSON_EXTRACT(objeto, CONCAT('$[', row, '].', tag ));
+        	SET info = JSON_EXTRACT(objeto, CONCAT('$[', roww, '].', tag ));
 	END IF;
 
         IF info IS NULL THEN
