@@ -1,5 +1,4 @@
-create
-    definer = root@`%` function VODAN_EXTRACT_DEC(objeto json, roww int, tag varchar(255)) returns decimal(13, 2)
+create function VODAN_EXTRACT_DEC(objeto json, roww int, tag varchar(255)) returns decimal(13, 2)
 BEGIN
         DECLARE info VARCHAR(128);
 	IF roww IS NULL THEN 

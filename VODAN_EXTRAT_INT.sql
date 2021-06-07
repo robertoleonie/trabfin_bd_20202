@@ -1,5 +1,4 @@
-create
-    definer = root@`%` function VODAN_EXTRACT_INT(objeto json, roww int, tag varchar(255)) returns int
+create function VODAN_EXTRACT_INT(objeto json, roww int, tag varchar(255)) returns int
 BEGIN
         DECLARE info VARCHAR(128);
 	IF roww IS NULL THEN 

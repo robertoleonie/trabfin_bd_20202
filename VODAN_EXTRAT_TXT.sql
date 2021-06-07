@@ -1,5 +1,4 @@
-create
-    definer = root@`%` function VODAN_EXTRACT_TXT(objeto json, roww int, tag varchar(255)) returns text
+create function VODAN_EXTRACT_TXT(objeto json, roww int, tag varchar(255)) returns text
 BEGIN
         #DECLARE info varchar(1000);
         DECLARE info TEXT CHARACTER SET utf8;
