@@ -40,34 +40,34 @@ IF liDados > 0 THEN
 		SET DSDescricao = VODAN_EXTRACT_TXT(input,ind,'DS_Descricao');
 
 		IF Acao != 'INCLUIR' AND Acao != 'ALTERAR' AND Acao != 'EXCLUIR'  THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListType_SP Acao vazia  ';  /* RETORNAR ERRO */
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListofValues_SP Acao vazia  ';  /* RETORNAR ERRO */
 		END IF;
         IF Acao IS NULL OR Acao = '' THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListType_SP Acao vazia  ';  /* RETORNAR ERRO */
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListofValues_SP Acao vazia  ';  /* RETORNAR ERRO */
         END IF;
 
 		IF DSDescricao IS NULL AND  Acao = 'INCLUIR' THEN
-			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListType_SP DS_Descricao não preenchida  ';  /* RETORNAR ERRO */
+			SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListofValues_SP DS_Descricao não preenchida  ';  /* RETORNAR ERRO */
 		END IF;
 
 		IF IDListType is not null then
             SET IDListType = (select COUNT(*) from tb_listtype
                                 where listTypeID = IDListType);
             if IDListType > 0 then
-                SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListType_SP SQ_ListType não existe ';  /* RETORNAR ERRO */
+                SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListofValues_SP SQ_ListType não existe ';  /* RETORNAR ERRO */
             end if;
         end if;
 
 		IF DSDescricao IS NOT NULL THEN
 			IF DSDescricao = '' THEN
-				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListType_SP DS_Descricao não preenchida';
+				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListofValues_SP DS_Descricao não preenchida';
 			ELSE
 				SET liCount = (SELECT COUNT(*) FROM tb_listofvalues
 						WHERE  DSDescricao =  DSDescricao
 						AND listTypeID != IDListofValues
 						);
 				IF liCount > 0  AND  Acao = 'INCLUIR' THEN
-					SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListType_SP DS_Descricao já existe';
+					SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListofValues_SP DS_Descricao já existe';
 				END IF;
 			END IF;
 		END IF;
@@ -76,7 +76,7 @@ IF liDados > 0 THEN
 			SET IDListofValues = (SELECT listOfValuesID FROM tb_listofvalues
 						WHERE listOfValuesID = IDListofValues);
 			IF IDListofValues IS NULL THEN
-				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListType_SP SQ_ListofValues não localizado na base';
+				SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Erro na Vodan_Cadastro_ListofValues_SP SQ_ListofValues não localizado na base';
 			END IF;
 		END IF;
 
