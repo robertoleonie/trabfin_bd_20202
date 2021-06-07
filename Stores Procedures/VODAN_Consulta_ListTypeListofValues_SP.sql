@@ -1,8 +1,8 @@
 
 DELIMITER ;
-DROP PROCEDURE IF EXISTS `VODAN_Consulta_ListTypeListofValues_SP`;
+DROP PROCEDURE IF EXISTS `Vodan_Consulta_ListTypeListofValues_SP`;
 DELIMITER $$
-CREATE  PROCEDURE `VODAN_Consulta_ListTypeListofValues_SP`(
+CREATE  PROCEDURE `Vodan_Consulta_ListTypeListofValues_SP`(
     ID_ListType INT
 	)
 BEGIN
