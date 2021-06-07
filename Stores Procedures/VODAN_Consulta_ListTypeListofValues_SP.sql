@@ -12,10 +12,14 @@ BEGIN
 	END IF;
 
 	select tl.listTypeID, tl.description,
-        json_array(JSON_OBJECTAGG(tl2.listOfValuesID,tl2.description))
+        json_array(JSON_OBJECTAGG(tl2.listOfValuesID,tl2.description)) as ListofValues
         from tb_listofvalues tl2
     inner join tb_listtype tl on tl2.listTypeID = tl.listTypeID
-    WHERE TL.listTypeID = ID_ListType
+    WHERE case when ID_ListType is not null then 
+        tl.listTypeID = ID_ListType
+	else
+	    1=1
+	end
     group by tl.listTypeID, tl.description;
 
 END $$
