@@ -1,3 +1,7 @@
+-- Script responsável por mudar a engine de todas as tabelas ORIGINAIS
+-- e adicionar as FK necessárias
+
+
 begin;
 SET GLOBAL log_bin_trust_function_creators = 1;
 use vodan_br_bd;
