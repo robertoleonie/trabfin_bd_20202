@@ -1,3 +1,4 @@
+
 # trabfin_bd_20202
 Trabalho Final - Banco de Dados I - 2020/2
 
@@ -76,7 +77,7 @@ E veja se está funcionando no [localhost](http://localhost/index.php)
 Se tudo já está em ordem, agora chegou a hora de lançar o servidor.
 Mas antes, no arquivo site_vodan/config/app_local.php, coloquem o login e senha do usuário do banco de dados.
 O root é aceito:
-![Exemplo de login e senha no app_local.php](https://drive.google.com/file/d/1CARe8mI6dv7yVfhbe9GLe1d932dYhBLq/view?usp=sharing)
+![Exemplo de login e senha no app_local.php](https://user-images.githubusercontent.com/51456769/121438851-25e67800-c95b-11eb-9ab6-560686b531b7.png)
 
 Depois disso, basta executar o arquivo cake. Dentro da pasta do repositório:
 ```sh
@@ -86,4 +87,4 @@ O site será então iniciado, e poderá ser acessado com o endereço https://loc
 - - - -
 ##Instalação Windows
 Acredito que o wampserver e o xampp possuam dentro do seus diretórios, a maioria dos arquivos necessários.
-![por favor expanda o README](https://imgur.com/a/qCzSaMt)
+![por favor expanda o README](https://user-images.githubusercontent.com/51456769/121438939-49112780-c95b-11eb-86a4-96ce9eda08e1.png)
