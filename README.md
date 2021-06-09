@@ -9,7 +9,7 @@ Nomes
 - Leonardo Emerson André Alves 117062624
 - Ana Clara Monteiro de Oliveira 115199661
 - Andreza Cardoso Santos  115209709
-- - - -
+
 ## Instalação no linux (debian)
 ### Parte 1: apache
 Primeiramente é necessária algum serviço para hostear o site
@@ -84,7 +84,7 @@ Depois disso, basta executar o arquivo cake. Dentro da pasta do repositório:
 ./bin/cake serve
 ```
 O site será então iniciado, e poderá ser acessado com o endereço https://localhost:8765
-- - - -
+
 ## Instalação Windows
 Acredito que o wampserver e o xampp possuam dentro do seus diretórios, a maioria dos arquivos necessários.
 ![por favor expanda o README](https://user-images.githubusercontent.com/51456769/121438939-49112780-c95b-11eb-86a4-96ce9eda08e1.png)
