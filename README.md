@@ -76,7 +76,7 @@ E veja se está funcionando no [localhost](http://localhost/index.php)
 Se tudo já está em ordem, agora chegou a hora de lançar o servidor.
 Mas antes, no arquivo site_vodan/config/app_local.php, coloquem o login e senha do usuário do banco de dados.
 O root é aceito:
-[picture alt](https://drive.google.com/file/d/1CARe8mI6dv7yVfhbe9GLe1d932dYhBLq/view?usp=sharing)
+<img alt="Exemplo de usuário e senha" scr="https://drive.google.com/file/d/1CARe8mI6dv7yVfhbe9GLe1d932dYhBLq/view?usp=sharing" />
 
 Depois disso, basta executar o arquivo cake. Dentro da pasta do repositório:
 ```sh
@@ -86,4 +86,4 @@ O site será então iniciado, e poderá ser acessado com o endereço https://loc
 - - - -
 ##Instalação Windows
 Acredito que o wampserver e o xampp possuam dentro do seus diretórios, a maioria dos arquivos necessários.
-[picture alt](https://imgur.com/a/qCzSaMt)
+<img alt="Por favor complete para os usuários do windows" scr="https://imgur.com/a/qCzSaMt" />
