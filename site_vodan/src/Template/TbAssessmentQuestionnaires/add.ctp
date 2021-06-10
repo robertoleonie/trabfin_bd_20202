@@ -8,12 +8,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Tb Assessment Questionnaires'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Participants'), ['controller' => 'TbParticipants', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Participant'), ['controller' => 'TbParticipants', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Hospital Units'), ['controller' => 'TbHospitalUnits', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Hospital Unit'), ['controller' => 'TbHospitalUnits', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Questionnaires'), ['controller' => 'TbQuestionnaires', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Questionnaire'), ['controller' => 'TbQuestionnaires', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tbAssessmentQuestionnaires form large-9 medium-8 columns content">

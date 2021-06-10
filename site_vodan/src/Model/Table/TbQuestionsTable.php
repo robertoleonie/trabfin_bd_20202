@@ -9,9 +9,9 @@ use Cake\Validation\Validator;
 /**
  * TbQuestions Model
  *
- * @property \App\Model\Table\TbQuestionTypesTable&\Cake\ORM\Association\BelongsTo $TbQuestionTypes
- * @property \App\Model\Table\TbListOfValuesTable&\Cake\ORM\Association\BelongsTo $TbListOfValues
- * @property \App\Model\Table\TbQuestionGroupsTable&\Cake\ORM\Association\BelongsTo $TbQuestionGroups
+ * @property \App\Model\Table\QuestionTypesTable&\Cake\ORM\Association\BelongsTo $QuestionTypes
+ * @property \App\Model\Table\ListTypesTable&\Cake\ORM\Association\BelongsTo $ListTypes
+ * @property \App\Model\Table\QuestionGroupsTable&\Cake\ORM\Association\BelongsTo $QuestionGroups
  *
  * @method \App\Model\Entity\TbQuestion get($primaryKey, $options = [])
  * @method \App\Model\Entity\TbQuestion newEntity($data = null, array $options = [])
@@ -35,17 +35,17 @@ class TbQuestionsTable extends Table
         parent::initialize($config);
 
         $this->setTable('tb_questions');
-        $this->setDisplayField('question_idb');
-        $this->setPrimaryKey('question_idb');
+        $this->setDisplayField('question_id');
+        $this->setPrimaryKey('question_id');
 
-        $this->belongsTo('TbQuestionTypes', [
+        $this->belongsTo('QuestionTypes', [
             'foreignKey' => 'question_type_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('TbListOfValues', [
+        $this->belongsTo('ListTypes', [
             'foreignKey' => 'list_type_id',
         ]);
-        $this->belongsTo('TbQuestionGroups', [
+        $this->belongsTo('QuestionGroups', [
             'foreignKey' => 'question_group_id',
         ]);
     }
@@ -59,8 +59,8 @@ class TbQuestionsTable extends Table
     public function validationDefault(Validator $validator)
     {
         $validator
-            ->integer('question_idb')
-            ->allowEmptyString('question_idb', null, 'create');
+            ->integer('question_id')
+            ->allowEmptyString('question_id', null, 'create');
 
         $validator
             ->scalar('description')
@@ -88,9 +88,9 @@ class TbQuestionsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['question_type_id'], 'TbQuestionTypes'));
-        $rules->add($rules->existsIn(['list_type_id'], 'TbListOfValues'));
-        $rules->add($rules->existsIn(['question_group_id'], 'TbQuestionGroups'));
+        $rules->add($rules->existsIn(['question_type_id'], 'QuestionTypes'));
+        $rules->add($rules->existsIn(['list_type_id'], 'ListTypes'));
+        $rules->add($rules->existsIn(['question_group_id'], 'QuestionGroups'));
 
         return $rules;
     }

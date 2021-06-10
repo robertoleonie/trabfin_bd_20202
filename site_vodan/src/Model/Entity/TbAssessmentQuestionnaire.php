@@ -10,9 +10,9 @@ use Cake\ORM\Entity;
  * @property int $hospital_unit_id
  * @property int $questionnaire_id
  *
- * @property \App\Model\Entity\TbParticipant $tb_participant
- * @property \App\Model\Entity\TbHospitalUnit $tb_hospital_unit
- * @property \App\Model\Entity\TbQuestionnaire $tb_questionnaire
+ * @property \App\Model\Entity\Participant $participant
+ * @property \App\Model\Entity\HospitalUnit $hospital_unit
+ * @property \App\Model\Entity\Questionnaire $questionnaire
  */
 class TbAssessmentQuestionnaire extends Entity
 {
@@ -26,8 +26,8 @@ class TbAssessmentQuestionnaire extends Entity
      * @var array
      */
     protected $_accessible = [
-        'tb_participant' => true,
-        'tb_hospital_unit' => true,
-        'tb_questionnaire' => true,
+        'participant' => true,
+        'hospital_unit' => true,
+        'questionnaire' => true,
     ];
 }

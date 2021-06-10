@@ -9,17 +9,11 @@
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Form->postLink(
                 __('Delete'),
-                ['action' => 'delete', $tbQuestion->question_idb],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $tbQuestion->question_idb)]
+                ['action' => 'delete', $tbQuestion->question_id],
+                ['confirm' => __('Are you sure you want to delete # {0}?', $tbQuestion->question_id)]
             )
         ?></li>
         <li><?= $this->Html->link(__('List Tb Questions'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Question Types'), ['controller' => 'TbQuestionTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Question Type'), ['controller' => 'TbQuestionTypes', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb List Of Values'), ['controller' => 'TbListOfValues', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb List Of Value'), ['controller' => 'TbListOfValues', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Question Groups'), ['controller' => 'TbQuestionGroups', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Question Group'), ['controller' => 'TbQuestionGroups', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tbQuestions form large-9 medium-8 columns content">
@@ -28,9 +22,9 @@
         <legend><?= __('Edit Tb Question') ?></legend>
         <?php
             echo $this->Form->control('description');
-            echo $this->Form->control('question_type_id', ['options' => $tbQuestionTypes]);
-            echo $this->Form->control('list_type_id', ['options' => $tbListOfValues, 'empty' => true]);
-            echo $this->Form->control('question_group_id', ['options' => $tbQuestionGroups, 'empty' => true]);
+            echo $this->Form->control('question_type_id');
+            echo $this->Form->control('list_type_id');
+            echo $this->Form->control('question_group_id');
             echo $this->Form->control('subordinateTo');
             echo $this->Form->control('isAbout');
         ?>

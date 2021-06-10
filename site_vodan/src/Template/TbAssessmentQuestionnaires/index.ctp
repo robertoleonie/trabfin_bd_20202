@@ -8,12 +8,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Tb Assessment Questionnaire'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Participants'), ['controller' => 'TbParticipants', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Participant'), ['controller' => 'TbParticipants', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Hospital Units'), ['controller' => 'TbHospitalUnits', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Hospital Unit'), ['controller' => 'TbHospitalUnits', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Questionnaires'), ['controller' => 'TbQuestionnaires', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Questionnaire'), ['controller' => 'TbQuestionnaires', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tbAssessmentQuestionnaires index large-9 medium-8 columns content">
@@ -30,9 +24,9 @@
         <tbody>
             <?php foreach ($tbAssessmentQuestionnaires as $tbAssessmentQuestionnaire): ?>
             <tr>
-                <td><?= $tbAssessmentQuestionnaire->has('tb_participant') ? $this->Html->link($tbAssessmentQuestionnaire->tb_participant->participant_id, ['controller' => 'TbParticipants', 'action' => 'view', $tbAssessmentQuestionnaire->tb_participant->participant_id]) : '' ?></td>
-                <td><?= $tbAssessmentQuestionnaire->has('tb_hospital_unit') ? $this->Html->link($tbAssessmentQuestionnaire->tb_hospital_unit->hospital_unit_id, ['controller' => 'TbHospitalUnits', 'action' => 'view', $tbAssessmentQuestionnaire->tb_hospital_unit->hospital_unit_id]) : '' ?></td>
-                <td><?= $tbAssessmentQuestionnaire->has('tb_questionnaire') ? $this->Html->link($tbAssessmentQuestionnaire->tb_questionnaire->questionnaire_id, ['controller' => 'TbQuestionnaires', 'action' => 'view', $tbAssessmentQuestionnaire->tb_questionnaire->questionnaire_id]) : '' ?></td>
+                <td><?= $this->Number->format($tbAssessmentQuestionnaire->participant_id) ?></td>
+                <td><?= $this->Number->format($tbAssessmentQuestionnaire->hospital_unit_id) ?></td>
+                <td><?= $this->Number->format($tbAssessmentQuestionnaire->questionnaire_id) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $tbAssessmentQuestionnaire->participant_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $tbAssessmentQuestionnaire->participant_id]) ?>

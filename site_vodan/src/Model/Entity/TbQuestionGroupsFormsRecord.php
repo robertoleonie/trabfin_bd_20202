@@ -9,13 +9,14 @@ use Cake\ORM\Entity;
  * @property int $questionGroupFormRecordID
  * @property int $form_record_id
  * @property int $crfform_id
- * @property int $question_idb
+ * @property int $question_id
  * @property int|null $list_of_value_id
  * @property string|null $answer
  *
  * @property \App\Model\Entity\FormRecord $form_record
- * @property \App\Model\Entity\TbCrfform $tb_crfform
- * @property \App\Model\Entity\TbListOfValue $tb_list_of_value
+ * @property \App\Model\Entity\Crfform $crfform
+ * @property \App\Model\Entity\Question $question
+ * @property \App\Model\Entity\ListOfValue $list_of_value
  */
 class TbQuestionGroupsFormsRecord extends Entity
 {
@@ -31,11 +32,12 @@ class TbQuestionGroupsFormsRecord extends Entity
     protected $_accessible = [
         'form_record_id' => true,
         'crfform_id' => true,
-        'question_idb' => true,
+        'question_id' => true,
         'list_of_value_id' => true,
         'answer' => true,
         'form_record' => true,
-        'tb_crfform' => true,
-        'tb_list_of_value' => true,
+        'crfform' => true,
+        'question' => true,
+        'list_of_value' => true,
     ];
 }

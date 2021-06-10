@@ -7,10 +7,11 @@ use Cake\ORM\Entity;
  * TbQuestionGroupsForm Entity
  *
  * @property int $crfform_id
- * @property int $question_idb
+ * @property int $question_id
  * @property int $questionOrder
  *
- * @property \App\Model\Entity\TbCrfform $tb_crfform
+ * @property \App\Model\Entity\Crfform $crfform
+ * @property \App\Model\Entity\Question $question
  */
 class TbQuestionGroupsForm extends Entity
 {
@@ -25,6 +26,7 @@ class TbQuestionGroupsForm extends Entity
      */
     protected $_accessible = [
         'questionOrder' => true,
-        'tb_crfform' => true,
+        'crfform' => true,
+        'question' => true,
     ];
 }

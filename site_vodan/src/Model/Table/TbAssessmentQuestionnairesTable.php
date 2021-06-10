@@ -9,9 +9,9 @@ use Cake\Validation\Validator;
 /**
  * TbAssessmentQuestionnaires Model
  *
- * @property \App\Model\Table\TbParticipantsTable&\Cake\ORM\Association\BelongsTo $TbParticipants
- * @property \App\Model\Table\TbHospitalUnitsTable&\Cake\ORM\Association\BelongsTo $TbHospitalUnits
- * @property \App\Model\Table\TbQuestionnairesTable&\Cake\ORM\Association\BelongsTo $TbQuestionnaires
+ * @property \App\Model\Table\ParticipantsTable&\Cake\ORM\Association\BelongsTo $Participants
+ * @property \App\Model\Table\HospitalUnitsTable&\Cake\ORM\Association\BelongsTo $HospitalUnits
+ * @property \App\Model\Table\QuestionnairesTable&\Cake\ORM\Association\BelongsTo $Questionnaires
  *
  * @method \App\Model\Entity\TbAssessmentQuestionnaire get($primaryKey, $options = [])
  * @method \App\Model\Entity\TbAssessmentQuestionnaire newEntity($data = null, array $options = [])
@@ -38,15 +38,15 @@ class TbAssessmentQuestionnairesTable extends Table
         $this->setDisplayField('participant_id');
         $this->setPrimaryKey(['participant_id', 'hospital_unit_id', 'questionnaire_id']);
 
-        $this->belongsTo('TbParticipants', [
+        $this->belongsTo('Participants', [
             'foreignKey' => 'participant_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('TbHospitalUnits', [
+        $this->belongsTo('HospitalUnits', [
             'foreignKey' => 'hospital_unit_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('TbQuestionnaires', [
+        $this->belongsTo('Questionnaires', [
             'foreignKey' => 'questionnaire_id',
             'joinType' => 'INNER',
         ]);
@@ -61,9 +61,9 @@ class TbAssessmentQuestionnairesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['participant_id'], 'TbParticipants'));
-        $rules->add($rules->existsIn(['hospital_unit_id'], 'TbHospitalUnits'));
-        $rules->add($rules->existsIn(['questionnaire_id'], 'TbQuestionnaires'));
+        $rules->add($rules->existsIn(['participant_id'], 'Participants'));
+        $rules->add($rules->existsIn(['hospital_unit_id'], 'HospitalUnits'));
+        $rules->add($rules->existsIn(['questionnaire_id'], 'Questionnaires'));
 
         return $rules;
     }

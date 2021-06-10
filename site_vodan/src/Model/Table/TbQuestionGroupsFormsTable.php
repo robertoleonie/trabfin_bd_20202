@@ -9,7 +9,8 @@ use Cake\Validation\Validator;
 /**
  * TbQuestionGroupsForms Model
  *
- * @property \App\Model\Table\TbCrfformsTable&\Cake\ORM\Association\BelongsTo $TbCrfforms
+ * @property \App\Model\Table\CrfformsTable&\Cake\ORM\Association\BelongsTo $Crfforms
+ * @property \App\Model\Table\QuestionsTable&\Cake\ORM\Association\BelongsTo $Questions
  *
  * @method \App\Model\Entity\TbQuestionGroupsForm get($primaryKey, $options = [])
  * @method \App\Model\Entity\TbQuestionGroupsForm newEntity($data = null, array $options = [])
@@ -34,10 +35,14 @@ class TbQuestionGroupsFormsTable extends Table
 
         $this->setTable('tb_question_groups_forms');
         $this->setDisplayField('crfform_id');
-        $this->setPrimaryKey(['crfform_id', 'question_idb']);
+        $this->setPrimaryKey(['crfform_id', 'question_id']);
 
-        $this->belongsTo('TbCrfforms', [
+        $this->belongsTo('Crfforms', [
             'foreignKey' => 'crfform_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('Questions', [
+            'foreignKey' => 'question_id',
             'joinType' => 'INNER',
         ]);
     }
@@ -50,10 +55,6 @@ class TbQuestionGroupsFormsTable extends Table
      */
     public function validationDefault(Validator $validator)
     {
-        $validator
-            ->integer('question_idb')
-            ->allowEmptyString('question_idb', null, 'create');
-
         $validator
             ->integer('questionOrder')
             ->requirePresence('questionOrder', 'create')
@@ -71,7 +72,8 @@ class TbQuestionGroupsFormsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['crfform_id'], 'TbCrfforms'));
+        $rules->add($rules->existsIn(['crfform_id'], 'Crfforms'));
+        $rules->add($rules->existsIn(['question_id'], 'Questions'));
 
         return $rules;
     }

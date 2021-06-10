@@ -9,7 +9,7 @@ use Cake\Validation\Validator;
 /**
  * TbListOfValues Model
  *
- * @property \App\Model\Table\TbListTypesTable&\Cake\ORM\Association\BelongsTo $TbListTypes
+ * @property \App\Model\Table\ListTypesTable&\Cake\ORM\Association\BelongsTo $ListTypes
  *
  * @method \App\Model\Entity\TbListOfValue get($primaryKey, $options = [])
  * @method \App\Model\Entity\TbListOfValue newEntity($data = null, array $options = [])
@@ -36,7 +36,7 @@ class TbListOfValuesTable extends Table
         $this->setDisplayField('list_of_value_id');
         $this->setPrimaryKey('list_of_value_id');
 
-        $this->belongsTo('TbListTypes', [
+        $this->belongsTo('ListTypes', [
             'foreignKey' => 'list_type_id',
             'joinType' => 'INNER',
         ]);
@@ -72,7 +72,7 @@ class TbListOfValuesTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->existsIn(['list_type_id'], 'TbListTypes'));
+        $rules->add($rules->existsIn(['list_type_id'], 'ListTypes'));
 
         return $rules;
     }

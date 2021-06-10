@@ -20,7 +20,7 @@ class TbAssessmentQuestionnairesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['TbParticipants', 'TbHospitalUnits', 'TbQuestionnaires'],
+            'contain' => ['Participants', 'HospitalUnits', 'Questionnaires'],
         ];
         $tbAssessmentQuestionnaires = $this->paginate($this->TbAssessmentQuestionnaires);
 
@@ -37,7 +37,7 @@ class TbAssessmentQuestionnairesController extends AppController
     public function view($id = null)
     {
         $tbAssessmentQuestionnaire = $this->TbAssessmentQuestionnaires->get($id, [
-            'contain' => ['TbParticipants', 'TbHospitalUnits', 'TbQuestionnaires'],
+            'contain' => ['Participants', 'HospitalUnits', 'Questionnaires'],
         ]);
 
         $this->set('tbAssessmentQuestionnaire', $tbAssessmentQuestionnaire);
@@ -60,10 +60,10 @@ class TbAssessmentQuestionnairesController extends AppController
             }
             $this->Flash->error(__('The tb assessment questionnaire could not be saved. Please, try again.'));
         }
-        $tbParticipants = $this->TbAssessmentQuestionnaires->TbParticipants->find('list', ['limit' => 200]);
-        $tbHospitalUnits = $this->TbAssessmentQuestionnaires->TbHospitalUnits->find('list', ['limit' => 200]);
-        $tbQuestionnaires = $this->TbAssessmentQuestionnaires->TbQuestionnaires->find('list', ['limit' => 200]);
-        $this->set(compact('tbAssessmentQuestionnaire', 'tbParticipants', 'tbHospitalUnits', 'tbQuestionnaires'));
+        $participants = $this->TbAssessmentQuestionnaires->Participants->find('list', ['limit' => 200]);
+        $hospitalUnits = $this->TbAssessmentQuestionnaires->HospitalUnits->find('list', ['limit' => 200]);
+        $questionnaires = $this->TbAssessmentQuestionnaires->Questionnaires->find('list', ['limit' => 200]);
+        $this->set(compact('tbAssessmentQuestionnaire', 'participants', 'hospitalUnits', 'questionnaires'));
     }
 
     /**
@@ -87,10 +87,10 @@ class TbAssessmentQuestionnairesController extends AppController
             }
             $this->Flash->error(__('The tb assessment questionnaire could not be saved. Please, try again.'));
         }
-        $tbParticipants = $this->TbAssessmentQuestionnaires->TbParticipants->find('list', ['limit' => 200]);
-        $tbHospitalUnits = $this->TbAssessmentQuestionnaires->TbHospitalUnits->find('list', ['limit' => 200]);
-        $tbQuestionnaires = $this->TbAssessmentQuestionnaires->TbQuestionnaires->find('list', ['limit' => 200]);
-        $this->set(compact('tbAssessmentQuestionnaire', 'tbParticipants', 'tbHospitalUnits', 'tbQuestionnaires'));
+        $participants = $this->TbAssessmentQuestionnaires->Participants->find('list', ['limit' => 200]);
+        $hospitalUnits = $this->TbAssessmentQuestionnaires->HospitalUnits->find('list', ['limit' => 200]);
+        $questionnaires = $this->TbAssessmentQuestionnaires->Questionnaires->find('list', ['limit' => 200]);
+        $this->set(compact('tbAssessmentQuestionnaire', 'participants', 'hospitalUnits', 'questionnaires'));
     }
 
     /**

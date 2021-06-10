@@ -20,7 +20,7 @@ class TbQuestionGroupsFormsRecordsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['FormRecords', 'TbCrfforms', 'TbListOfValues'],
+            'contain' => ['FormRecords', 'Crfforms', 'Questions', 'ListOfValues'],
         ];
         $tbQuestionGroupsFormsRecords = $this->paginate($this->TbQuestionGroupsFormsRecords);
 
@@ -37,7 +37,7 @@ class TbQuestionGroupsFormsRecordsController extends AppController
     public function view($id = null)
     {
         $tbQuestionGroupsFormsRecord = $this->TbQuestionGroupsFormsRecords->get($id, [
-            'contain' => ['FormRecords', 'TbCrfforms', 'TbListOfValues'],
+            'contain' => ['FormRecords', 'Crfforms', 'Questions', 'ListOfValues'],
         ]);
 
         $this->set('tbQuestionGroupsFormsRecord', $tbQuestionGroupsFormsRecord);
@@ -61,9 +61,10 @@ class TbQuestionGroupsFormsRecordsController extends AppController
             $this->Flash->error(__('The tb question groups forms record could not be saved. Please, try again.'));
         }
         $formRecords = $this->TbQuestionGroupsFormsRecords->FormRecords->find('list', ['limit' => 200]);
-        $tbCrfforms = $this->TbQuestionGroupsFormsRecords->TbCrfforms->find('list', ['limit' => 200]);
-        $tbListOfValues = $this->TbQuestionGroupsFormsRecords->TbListOfValues->find('list', ['limit' => 200]);
-        $this->set(compact('tbQuestionGroupsFormsRecord', 'formRecords', 'tbCrfforms', 'tbListOfValues'));
+        $crfforms = $this->TbQuestionGroupsFormsRecords->Crfforms->find('list', ['limit' => 200]);
+        $questions = $this->TbQuestionGroupsFormsRecords->Questions->find('list', ['limit' => 200]);
+        $listOfValues = $this->TbQuestionGroupsFormsRecords->ListOfValues->find('list', ['limit' => 200]);
+        $this->set(compact('tbQuestionGroupsFormsRecord', 'formRecords', 'crfforms', 'questions', 'listOfValues'));
     }
 
     /**
@@ -88,9 +89,10 @@ class TbQuestionGroupsFormsRecordsController extends AppController
             $this->Flash->error(__('The tb question groups forms record could not be saved. Please, try again.'));
         }
         $formRecords = $this->TbQuestionGroupsFormsRecords->FormRecords->find('list', ['limit' => 200]);
-        $tbCrfforms = $this->TbQuestionGroupsFormsRecords->TbCrfforms->find('list', ['limit' => 200]);
-        $tbListOfValues = $this->TbQuestionGroupsFormsRecords->TbListOfValues->find('list', ['limit' => 200]);
-        $this->set(compact('tbQuestionGroupsFormsRecord', 'formRecords', 'tbCrfforms', 'tbListOfValues'));
+        $crfforms = $this->TbQuestionGroupsFormsRecords->Crfforms->find('list', ['limit' => 200]);
+        $questions = $this->TbQuestionGroupsFormsRecords->Questions->find('list', ['limit' => 200]);
+        $listOfValues = $this->TbQuestionGroupsFormsRecords->ListOfValues->find('list', ['limit' => 200]);
+        $this->set(compact('tbQuestionGroupsFormsRecord', 'formRecords', 'crfforms', 'questions', 'listOfValues'));
     }
 
     /**

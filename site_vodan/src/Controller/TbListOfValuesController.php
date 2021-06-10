@@ -20,7 +20,7 @@ class TbListOfValuesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['TbListTypes'],
+            'contain' => ['ListTypes'],
         ];
         $tbListOfValues = $this->paginate($this->TbListOfValues);
 
@@ -37,7 +37,7 @@ class TbListOfValuesController extends AppController
     public function view($id = null)
     {
         $tbListOfValue = $this->TbListOfValues->get($id, [
-            'contain' => ['TbListTypes'],
+            'contain' => ['ListTypes'],
         ]);
 
         $this->set('tbListOfValue', $tbListOfValue);
@@ -60,8 +60,8 @@ class TbListOfValuesController extends AppController
             }
             $this->Flash->error(__('The tb list of value could not be saved. Please, try again.'));
         }
-        $tbListTypes = $this->TbListOfValues->TbListTypes->find('list', ['limit' => 200]);
-        $this->set(compact('tbListOfValue', 'tbListTypes'));
+        $listTypes = $this->TbListOfValues->ListTypes->find('list', ['limit' => 200]);
+        $this->set(compact('tbListOfValue', 'listTypes'));
     }
 
     /**
@@ -85,8 +85,8 @@ class TbListOfValuesController extends AppController
             }
             $this->Flash->error(__('The tb list of value could not be saved. Please, try again.'));
         }
-        $tbListTypes = $this->TbListOfValues->TbListTypes->find('list', ['limit' => 200]);
-        $this->set(compact('tbListOfValue', 'tbListTypes'));
+        $listTypes = $this->TbListOfValues->ListTypes->find('list', ['limit' => 200]);
+        $this->set(compact('tbListOfValue', 'listTypes'));
     }
 
     /**

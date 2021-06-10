@@ -20,7 +20,7 @@ class TbQuestionGroupsFormsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['TbCrfforms'],
+            'contain' => ['Crfforms', 'Questions'],
         ];
         $tbQuestionGroupsForms = $this->paginate($this->TbQuestionGroupsForms);
 
@@ -37,7 +37,7 @@ class TbQuestionGroupsFormsController extends AppController
     public function view($id = null)
     {
         $tbQuestionGroupsForm = $this->TbQuestionGroupsForms->get($id, [
-            'contain' => ['TbCrfforms'],
+            'contain' => ['Crfforms', 'Questions'],
         ]);
 
         $this->set('tbQuestionGroupsForm', $tbQuestionGroupsForm);
@@ -60,8 +60,9 @@ class TbQuestionGroupsFormsController extends AppController
             }
             $this->Flash->error(__('The tb question groups form could not be saved. Please, try again.'));
         }
-        $tbCrfforms = $this->TbQuestionGroupsForms->TbCrfforms->find('list', ['limit' => 200]);
-        $this->set(compact('tbQuestionGroupsForm', 'tbCrfforms'));
+        $crfforms = $this->TbQuestionGroupsForms->Crfforms->find('list', ['limit' => 200]);
+        $questions = $this->TbQuestionGroupsForms->Questions->find('list', ['limit' => 200]);
+        $this->set(compact('tbQuestionGroupsForm', 'crfforms', 'questions'));
     }
 
     /**
@@ -85,8 +86,9 @@ class TbQuestionGroupsFormsController extends AppController
             }
             $this->Flash->error(__('The tb question groups form could not be saved. Please, try again.'));
         }
-        $tbCrfforms = $this->TbQuestionGroupsForms->TbCrfforms->find('list', ['limit' => 200]);
-        $this->set(compact('tbQuestionGroupsForm', 'tbCrfforms'));
+        $crfforms = $this->TbQuestionGroupsForms->Crfforms->find('list', ['limit' => 200]);
+        $questions = $this->TbQuestionGroupsForms->Questions->find('list', ['limit' => 200]);
+        $this->set(compact('tbQuestionGroupsForm', 'crfforms', 'questions'));
     }
 
     /**

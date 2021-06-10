@@ -14,8 +14,6 @@
             )
         ?></li>
         <li><?= $this->Html->link(__('List Tb Question Groups Forms'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Crfforms'), ['controller' => 'TbCrfforms', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Crfform'), ['controller' => 'TbCrfforms', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tbQuestionGroupsForms form large-9 medium-8 columns content">

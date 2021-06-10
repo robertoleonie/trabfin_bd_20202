@@ -20,7 +20,7 @@ class TbQuestionsController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['TbQuestionTypes', 'TbListOfValues', 'TbQuestionGroups'],
+            'contain' => ['QuestionTypes', 'ListTypes', 'QuestionGroups'],
         ];
         $tbQuestions = $this->paginate($this->TbQuestions);
 
@@ -37,7 +37,7 @@ class TbQuestionsController extends AppController
     public function view($id = null)
     {
         $tbQuestion = $this->TbQuestions->get($id, [
-            'contain' => ['TbQuestionTypes', 'TbListOfValues', 'TbQuestionGroups'],
+            'contain' => ['QuestionTypes', 'ListTypes', 'QuestionGroups'],
         ]);
 
         $this->set('tbQuestion', $tbQuestion);
@@ -60,10 +60,10 @@ class TbQuestionsController extends AppController
             }
             $this->Flash->error(__('The tb question could not be saved. Please, try again.'));
         }
-        $tbQuestionTypes = $this->TbQuestions->TbQuestionTypes->find('list', ['limit' => 200]);
-        $tbListOfValues = $this->TbQuestions->TbListOfValues->find('list', ['limit' => 200]);
-        $tbQuestionGroups = $this->TbQuestions->TbQuestionGroups->find('list', ['limit' => 200]);
-        $this->set(compact('tbQuestion', 'tbQuestionTypes', 'tbListOfValues', 'tbQuestionGroups'));
+        $questionTypes = $this->TbQuestions->QuestionTypes->find('list', ['limit' => 200]);
+        $listTypes = $this->TbQuestions->ListTypes->find('list', ['limit' => 200]);
+        $questionGroups = $this->TbQuestions->QuestionGroups->find('list', ['limit' => 200]);
+        $this->set(compact('tbQuestion', 'questionTypes', 'listTypes', 'questionGroups'));
     }
 
     /**
@@ -87,10 +87,10 @@ class TbQuestionsController extends AppController
             }
             $this->Flash->error(__('The tb question could not be saved. Please, try again.'));
         }
-        $tbQuestionTypes = $this->TbQuestions->TbQuestionTypes->find('list', ['limit' => 200]);
-        $tbListOfValues = $this->TbQuestions->TbListOfValues->find('list', ['limit' => 200]);
-        $tbQuestionGroups = $this->TbQuestions->TbQuestionGroups->find('list', ['limit' => 200]);
-        $this->set(compact('tbQuestion', 'tbQuestionTypes', 'tbListOfValues', 'tbQuestionGroups'));
+        $questionTypes = $this->TbQuestions->QuestionTypes->find('list', ['limit' => 200]);
+        $listTypes = $this->TbQuestions->ListTypes->find('list', ['limit' => 200]);
+        $questionGroups = $this->TbQuestions->QuestionGroups->find('list', ['limit' => 200]);
+        $this->set(compact('tbQuestion', 'questionTypes', 'listTypes', 'questionGroups'));
     }
 
     /**

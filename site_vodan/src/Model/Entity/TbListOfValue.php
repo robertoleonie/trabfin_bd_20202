@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
  * @property int $list_type_id
  * @property string $description
  *
- * @property \App\Model\Entity\TbListType $tb_list_type
+ * @property \App\Model\Entity\ListType $list_type
  */
 class TbListOfValue extends Entity
 {
@@ -26,6 +26,6 @@ class TbListOfValue extends Entity
     protected $_accessible = [
         'list_type_id' => true,
         'description' => true,
-        'tb_list_type' => true,
+        'list_type' => true,
     ];
 }

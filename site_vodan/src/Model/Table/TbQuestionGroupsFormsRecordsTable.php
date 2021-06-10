@@ -10,8 +10,9 @@ use Cake\Validation\Validator;
  * TbQuestionGroupsFormsRecords Model
  *
  * @property \App\Model\Table\FormRecordsTable&\Cake\ORM\Association\BelongsTo $FormRecords
- * @property \App\Model\Table\TbCrfformsTable&\Cake\ORM\Association\BelongsTo $TbCrfforms
- * @property \App\Model\Table\TbListOfValuesTable&\Cake\ORM\Association\BelongsTo $TbListOfValues
+ * @property \App\Model\Table\CrfformsTable&\Cake\ORM\Association\BelongsTo $Crfforms
+ * @property \App\Model\Table\QuestionsTable&\Cake\ORM\Association\BelongsTo $Questions
+ * @property \App\Model\Table\ListOfValuesTable&\Cake\ORM\Association\BelongsTo $ListOfValues
  *
  * @method \App\Model\Entity\TbQuestionGroupsFormsRecord get($primaryKey, $options = [])
  * @method \App\Model\Entity\TbQuestionGroupsFormsRecord newEntity($data = null, array $options = [])
@@ -42,11 +43,15 @@ class TbQuestionGroupsFormsRecordsTable extends Table
             'foreignKey' => 'form_record_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('TbCrfforms', [
+        $this->belongsTo('Crfforms', [
             'foreignKey' => 'crfform_id',
             'joinType' => 'INNER',
         ]);
-        $this->belongsTo('TbListOfValues', [
+        $this->belongsTo('Questions', [
+            'foreignKey' => 'question_id',
+            'joinType' => 'INNER',
+        ]);
+        $this->belongsTo('ListOfValues', [
             'foreignKey' => 'list_of_value_id',
         ]);
     }
@@ -62,11 +67,6 @@ class TbQuestionGroupsFormsRecordsTable extends Table
         $validator
             ->integer('questionGroupFormRecordID')
             ->allowEmptyString('questionGroupFormRecordID', null, 'create');
-
-        $validator
-            ->integer('question_idb')
-            ->requirePresence('question_idb', 'create')
-            ->notEmptyString('question_idb');
 
         $validator
             ->scalar('answer')
@@ -86,8 +86,9 @@ class TbQuestionGroupsFormsRecordsTable extends Table
     public function buildRules(RulesChecker $rules)
     {
         $rules->add($rules->existsIn(['form_record_id'], 'FormRecords'));
-        $rules->add($rules->existsIn(['crfform_id'], 'TbCrfforms'));
-        $rules->add($rules->existsIn(['list_of_value_id'], 'TbListOfValues'));
+        $rules->add($rules->existsIn(['crfform_id'], 'Crfforms'));
+        $rules->add($rules->existsIn(['question_id'], 'Questions'));
+        $rules->add($rules->existsIn(['list_of_value_id'], 'ListOfValues'));
 
         return $rules;
     }

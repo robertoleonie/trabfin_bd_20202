@@ -6,7 +6,7 @@ use Cake\ORM\Entity;
 /**
  * TbQuestion Entity
  *
- * @property int $question_idb
+ * @property int $question_id
  * @property string $description
  * @property int $question_type_id
  * @property int|null $list_type_id
@@ -14,9 +14,9 @@ use Cake\ORM\Entity;
  * @property int|null $subordinateTo
  * @property int|null $isAbout
  *
- * @property \App\Model\Entity\TbQuestionType $tb_question_type
- * @property \App\Model\Entity\TbListOfValue $tb_list_of_value
- * @property \App\Model\Entity\TbQuestionGroup $tb_question_group
+ * @property \App\Model\Entity\QuestionType $question_type
+ * @property \App\Model\Entity\ListType $list_type
+ * @property \App\Model\Entity\QuestionGroup $question_group
  */
 class TbQuestion extends Entity
 {
@@ -36,8 +36,8 @@ class TbQuestion extends Entity
         'question_group_id' => true,
         'subordinateTo' => true,
         'isAbout' => true,
-        'tb_question_type' => true,
-        'tb_list_of_value' => true,
-        'tb_question_group' => true,
+        'question_type' => true,
+        'list_type' => true,
+        'question_group' => true,
     ];
 }

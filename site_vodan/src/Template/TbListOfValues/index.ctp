@@ -8,8 +8,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Tb List Of Value'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb List Types'), ['controller' => 'TbListTypes', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb List Type'), ['controller' => 'TbListTypes', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tbListOfValues index large-9 medium-8 columns content">
@@ -27,7 +25,7 @@
             <?php foreach ($tbListOfValues as $tbListOfValue): ?>
             <tr>
                 <td><?= $this->Number->format($tbListOfValue->list_of_value_id) ?></td>
-                <td><?= $tbListOfValue->has('tb_list_type') ? $this->Html->link($tbListOfValue->tb_list_type->list_type_id, ['controller' => 'TbListTypes', 'action' => 'view', $tbListOfValue->tb_list_type->list_type_id]) : '' ?></td>
+                <td><?= $this->Number->format($tbListOfValue->list_type_id) ?></td>
                 <td><?= h($tbListOfValue->description) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $tbListOfValue->list_of_value_id]) ?>

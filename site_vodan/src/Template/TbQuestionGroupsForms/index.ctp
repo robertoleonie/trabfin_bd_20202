@@ -8,8 +8,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('New Tb Question Groups Form'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Tb Crfforms'), ['controller' => 'TbCrfforms', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Tb Crfform'), ['controller' => 'TbCrfforms', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="tbQuestionGroupsForms index large-9 medium-8 columns content">
@@ -18,7 +16,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('crfform_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('question_idb') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('question_id') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('questionOrder') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -26,8 +24,8 @@
         <tbody>
             <?php foreach ($tbQuestionGroupsForms as $tbQuestionGroupsForm): ?>
             <tr>
-                <td><?= $tbQuestionGroupsForm->has('tb_crfform') ? $this->Html->link($tbQuestionGroupsForm->tb_crfform->crfform_id, ['controller' => 'TbCrfforms', 'action' => 'view', $tbQuestionGroupsForm->tb_crfform->crfform_id]) : '' ?></td>
-                <td><?= $this->Number->format($tbQuestionGroupsForm->question_idb) ?></td>
+                <td><?= $this->Number->format($tbQuestionGroupsForm->crfform_id) ?></td>
+                <td><?= $this->Number->format($tbQuestionGroupsForm->question_id) ?></td>
                 <td><?= $this->Number->format($tbQuestionGroupsForm->questionOrder) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $tbQuestionGroupsForm->crfform_id]) ?>
