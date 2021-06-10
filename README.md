@@ -36,10 +36,13 @@ e reinicie o servidor:
 sudo systemctl restart mysql
 ```
 Agora, já é possível aplicar o sql contido no repositório.
-Procure pelo arquivo script_vodan_renomeado.sql nas pastas ./site_vodan ou ./
-Na pasta do repostório local, aplique:
+Procure pelo arquivo sqls_script_renomeacao.sh na pasta sqls/
+Aplique os scripts renomeados:
 ```sh
-sudo mysql -u root -p < ./site_vodan/script_vodan_renomeado.sql
+./sqls/script Script_VODAN_BR_BD(ReadsSQLData).sql
+./sqls/script query_relacionamentos.sql
+sudo mysql -u root -p < ./sqls/renomeado_Script_VODAN_BR_BD(ReadsSQLData).sql
+sudo mysql -u root -p < ./sqls/renomeado_query_relacionamentos.sql
 ```
 ### Parte 3: php
 Aplique os repositórios
