@@ -1,6 +1,4 @@
 <?php
-declare(strict_types=1);
-
 namespace App\Test\TestCase\Controller;
 
 use App\Controller\TbQuestionsController;
@@ -21,8 +19,11 @@ class TbQuestionsControllerTest extends TestCase
      *
      * @var array
      */
-    protected $fixtures = [
+    public $fixtures = [
         'app.TbQuestions',
+        'app.TbQuestionTypes',
+        'app.TbListOfValues',
+        'app.TbQuestionGroups',
     ];
 
     /**
@@ -30,7 +31,7 @@ class TbQuestionsControllerTest extends TestCase
      *
      * @return void
      */
-    public function testIndex(): void
+    public function testIndex()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -40,7 +41,7 @@ class TbQuestionsControllerTest extends TestCase
      *
      * @return void
      */
-    public function testView(): void
+    public function testView()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -50,7 +51,7 @@ class TbQuestionsControllerTest extends TestCase
      *
      * @return void
      */
-    public function testAdd(): void
+    public function testAdd()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -60,7 +61,7 @@ class TbQuestionsControllerTest extends TestCase
      *
      * @return void
      */
-    public function testEdit(): void
+    public function testEdit()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
@@ -70,7 +71,7 @@ class TbQuestionsControllerTest extends TestCase
      *
      * @return void
      */
-    public function testDelete(): void
+    public function testDelete()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

@@ -1,9 +1,8 @@
 <?php
-declare(strict_types=1);
-
 namespace App\Test\TestCase\Model\Table;
 
 use App\Model\Table\TbQuestionsTable;
+use Cake\ORM\TableRegistry;
 use Cake\TestSuite\TestCase;
 
 /**
@@ -16,15 +15,18 @@ class TbQuestionsTableTest extends TestCase
      *
      * @var \App\Model\Table\TbQuestionsTable
      */
-    protected $TbQuestions;
+    public $TbQuestions;
 
     /**
      * Fixtures
      *
      * @var array
      */
-    protected $fixtures = [
+    public $fixtures = [
         'app.TbQuestions',
+        'app.TbQuestionTypes',
+        'app.TbListOfValues',
+        'app.TbQuestionGroups',
     ];
 
     /**
@@ -32,11 +34,11 @@ class TbQuestionsTableTest extends TestCase
      *
      * @return void
      */
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('TbQuestions') ? [] : ['className' => TbQuestionsTable::class];
-        $this->TbQuestions = $this->getTableLocator()->get('TbQuestions', $config);
+        $config = TableRegistry::getTableLocator()->exists('TbQuestions') ? [] : ['className' => TbQuestionsTable::class];
+        $this->TbQuestions = TableRegistry::getTableLocator()->get('TbQuestions', $config);
     }
 
     /**
@@ -44,7 +46,7 @@ class TbQuestionsTableTest extends TestCase
      *
      * @return void
      */
-    public function tearDown(): void
+    public function tearDown()
     {
         unset($this->TbQuestions);
 
@@ -52,11 +54,31 @@ class TbQuestionsTableTest extends TestCase
     }
 
     /**
+     * Test initialize method
+     *
+     * @return void
+     */
+    public function testInitialize()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
      * Test validationDefault method
      *
      * @return void
      */
-    public function testValidationDefault(): void
+    public function testValidationDefault()
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     */
+    public function testBuildRules()
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

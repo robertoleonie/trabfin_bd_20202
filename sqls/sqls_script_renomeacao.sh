@@ -1,9 +1,9 @@
+#!/bin/bash
 ## ATENÇÃO
 # Esse arquivo renomea para adequar-se a nomeclatura do cakephp
 
 #renomear tabelas
-if [[ $1 -eq 0 ]]; then
-	rm -f -- renomeado_$1
+if [[ $# -ne 0 && -f $1 ]]; then
 	touch renomeado_$1
 	cp 'Script_VODAN_BR_BD(ReadsSQLData).sql' renomeado_$1
 	sed -i 's/\btb_userrole\b/tb_users_roles/g' renomeado_$1
@@ -31,7 +31,7 @@ if [[ $1 -eq 0 ]]; then
 	sed -i 's/\bgroupRoleID\b/group_role_id/g' renomeado_$1 
 	sed -i 's/\buserID\b/user_id/g' renomeado_$1
 	sed -i 's/\bquestionTypeID\b/question_type_id/g' renomeado_$1
-	sed -i 's/\bquestionID\b/question_id\b/g ' renomeado_$1
+	sed -i 's/\bquestionID\b/question_id/g ' renomeado_$1
 	sed -i 's/\bquestionnaireID\b/questionnaire_id/g' renomeado_$1
 	sed -i 's/\bquestionGroupFormRecordID \b/question_groups_forms_record_id/g' renomeado_$1
 	sed -i 's/\bcrfFormsID\b/crfform_id/g' renomeado_$1
