@@ -1,1 +1,4 @@
 script_pessoal_do_jao.sql
+sqls/relacionamentos_renomeado.sql
+sqls/arq_renomeado_temp.sql
+*.backup*
