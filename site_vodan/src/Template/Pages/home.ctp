@@ -79,6 +79,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
         <ul>
             <li class = "consulta_lista_resp" ><a href = "../ListTypes">Consultar/Manipular lista de respostas</a></li>
             <li><?= $this->Html->link(__('Criar lista de respostas'), ['controller' => 'ListTypes', 'action' => 'add']) ?></li>
+            <li><?= $this->Html->link(__('Criar resposta possível de ser padronizada em lista'), ['controller' => 'ListOfValues', 'action' => 'add']) ?></li>
+            <li class = "consulta_lista_resp" ><a href = "../ListOfValues">Ver respostas possíveis de serem padronizadas em lista</a></li>
         </ul>
     </div>
 </div>

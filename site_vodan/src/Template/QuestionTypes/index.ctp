@@ -26,9 +26,7 @@
                 <td><?= $this->Number->format($questionType->question_type_id) ?></td>
                 <td><?= h($questionType->description) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $questionType->question_type_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $questionType->question_type_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $questionType->question_type_id], ['confirm' => __('Are you sure you want to delete # {0}?', $questionType->question_type_id)]) ?>
+                    <?= $this->Html->link(__('Clone'), ['action' => 'add', '?' => array('description' => $questionType->description)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

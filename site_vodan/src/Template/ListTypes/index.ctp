@@ -26,9 +26,9 @@
                 <td><?= $this->Number->format($listType->list_type_id) ?></td>
                 <td><?= h($listType->description) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $listType->list_type_id]) ?>
+                    <?= $this->Html->link(__('Open'), ['action' => 'view', $listType->list_type_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $listType->list_type_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $listType->list_type_id], ['confirm' => __('Are you sure you want to delete # {0}?', $listType->list_type_id)]) ?>
+                    
                 </td>
             </tr>
             <?php endforeach; ?>

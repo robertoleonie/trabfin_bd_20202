@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+//use Cake\ORM\TableRegistry;
 /**
  * ListTypes Controller
  *
@@ -32,12 +32,17 @@ class ListTypesController extends AppController
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function view($id = null)
-    {
+    {   
         $listType = $this->ListTypes->get($id, [
             'contain' => [],
         ]);
+        
+        $this->loadModel('ListOfValues');
 
-        $this->set('listType', $listType);
+        $listOfValues = $this->ListOfValues->find('all',[
+            'conditions' => ['ListOfValues.list_type_id = '.$id]
+        ]);
+        $this->set(['listType' => $listType,'listOfValues' => $listOfValues]);
     }
 
     /**
@@ -81,7 +86,8 @@ class ListTypesController extends AppController
             }
             $this->Flash->error(__('The list type could not be saved. Please, try again.'));
         }
-        $this->set(compact('listType'));
+        
+        $this->set(compact('listType','listOfValues'));
     }
 
     /**

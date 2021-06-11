@@ -17,7 +17,11 @@
     <fieldset>
         <legend><?= __('Add List Of Value') ?></legend>
         <?php
-            echo $this->Form->control('list_type_id', ['options' => $listTypes]);
+            if(isset($_GET['list_type'])){
+                echo $this->Form->control('list_type_id', ['options' => $listTypes, 'value' => $_GET['list_type']]);
+            }else{
+                echo $this->Form->control('list_type_id', ['options' => $listTypes]);
+            }
             echo $this->Form->control('description');
         ?>
     </fieldset>

@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+//use Cake\ORM\TableRegistry;
 /**
  * ListOfValues Controller
  *
@@ -23,7 +23,6 @@ class ListOfValuesController extends AppController
             'contain' => ['ListTypes'],
         ];
         $listOfValues = $this->paginate($this->ListOfValues);
-
         $this->set(compact('listOfValues'));
     }
 

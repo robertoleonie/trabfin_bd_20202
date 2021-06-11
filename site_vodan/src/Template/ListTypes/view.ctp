@@ -25,4 +25,38 @@
             <td><?= $this->Number->format($listType->list_type_id) ?></td>
         </tr>
     </table>
+    <div class="listOfValues index columns content">
+        <div class="row">
+            <div class="columns large-5">
+                <h5><?= __('List of values of '.$listType->description) ?></h5>
+            </div>
+            <div class="columns large-5">
+                <?= $this->Html->link(__('New List Of Value'), 
+                ['controller' => 'ListOfValues', 'action' => 'add', '?' => array('list_type' => $listType->list_type_id) ],
+                ['class' => 'button right']) ?>
+                
+            </div>
+        </div>
+        <table cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th scope="col"><?= $this->Paginator->sort('list_of_value_id') ?></th>
+                    <th scope="col"><?= $this->Paginator->sort('description') ?></th>
+                    <th scope="col" class="actions"><?= __('Actions') ?></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($listOfValues as $listOfValue): ?>
+                <tr>
+                    <td><?= $this->Number->format($listOfValue->list_of_value_id) ?></td>
+                    <td><?= h($listOfValue->description) ?></td>
+                    <td class="actions">
+                        <?= $this->Html->link(__('View'),['controller' => 'ListOfValues', 'action' => 'view', $listOfValue->list_of_value_id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['controller' => 'ListOfValues','action' => 'edit', $listOfValue->list_of_value_id]) ?>
+                    </td>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>

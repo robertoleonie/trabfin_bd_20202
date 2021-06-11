@@ -27,7 +27,7 @@
             <?php foreach ($listOfValues as $listOfValue): ?>
             <tr>
                 <td><?= $this->Number->format($listOfValue->list_of_value_id) ?></td>
-                <td><?= $listOfValue->has('list_type') ? $this->Html->link($listOfValue->list_type->list_type_id, ['controller' => 'ListTypes', 'action' => 'view', $listOfValue->list_type->list_type_id]) : '' ?></td>
+                <td><?= $listOfValue->has('list_type') ? $this->Html->link($listOfValue->list_type->description, ['controller' => 'ListTypes', 'action' => 'view', $listOfValue->list_type->list_type_id]) : '' ?></td>
                 <td><?= h($listOfValue->description) ?></td>
                 <td class="actions">
                     <?= $this->Html->link(__('View'), ['action' => 'view', $listOfValue->list_of_value_id]) ?>
