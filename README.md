@@ -40,9 +40,7 @@ Procure pelo arquivo sqls_script_renomeacao.sh na pasta sqls/
 Aplique os scripts renomeados:
 ```sh
 ./sqls/script Script_VODAN_BR_BD(ReadsSQLData).sql
-./sqls/script query_relacionamentos.sql
 sudo mysql -u root -p < ./sqls/renomeado_Script_VODAN_BR_BD(ReadsSQLData).sql
-sudo mysql -u root -p < ./sqls/renomeado_query_relacionamentos.sql
 ```
 ### Parte 3: php
 Aplique os repositórios
