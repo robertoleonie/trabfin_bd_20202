@@ -7,7 +7,7 @@ BEGIN
         	SET info = JSON_EXTRACT(objeto, CONCAT('$[', roww, '].', tag ));
 	END IF;
 
-        IF info IS NULL THEN
+        IF info in (NULL,'NULL','null') THEN
                 RETURN NULL;
         END IF;
         
