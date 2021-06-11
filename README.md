@@ -36,8 +36,7 @@ e reinicie o servidor:
 sudo systemctl restart mysql
 ```
 Agora, já é possível aplicar o sql contido no repositório.
-Procure pelo arquivo sqls_script_renomeacao.sh na pasta sqls/
-Aplique os scripts renomeados:
+Procure pelo arquivo sqls_script_renomeacao.sh na pasta sqls/ e aplique os scripts renomeados:
 ```sh
 ./sqls/script Script_VODAN_BR_BD(ReadsSQLData).sql
 sudo mysql -u root -p < ./sqls/renomeado_Script_VODAN_BR_BD(ReadsSQLData).sql
@@ -82,7 +81,7 @@ O root é aceito:
 
 Depois disso, basta executar o arquivo cake. Dentro da pasta do repositório:
 ```sh
-./bin/cake serve
+./bin/cake server
 ```
 O site será então iniciado, e poderá ser acessado com o endereço https://localhost:8765
 
