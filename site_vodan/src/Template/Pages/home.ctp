@@ -57,8 +57,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="column">
         <h4>Formulários</h4>
         <ul>
-            <li class = "consultar_questionarios" ><a href = "../TbQuestionnaires">Consultar/Manipular questionario existente</a></li>
-            <li><?= $this->Html->link(__('Adicionar questionário'), ['controller' => 'TbQuestionnaires', 'action' => 'add']) ?></li>
+            <li class = "consultar_questionarios" ><a href = "../Questionnaires">Consultar/Manipular questionario existente</a></li>
+            <li><?= $this->Html->link(__('Adicionar questionário'), ['controller' => 'Questionnaires', 'action' => 'add']) ?></li>
         </ul>
     </div>
 </div>
@@ -67,8 +67,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="column">
         <h4>Tipo de Questões</h4>
         <ul>
-            <li class = "consulta_questoes"><a href = "../TbQuestionTypes">Consultar/Manipular tipos de questões</a></li>
-            <li><?= $this->Html->link(__('Criar novo tipo de questão'), ['controller' => 'TbQuestionTypes', 'action' => 'add']) ?></li>
+            <li class = "consulta_questoes"><a href = "../QuestionTypes">Consultar/Manipular tipos de questões</a></li>
+            <li><?= $this->Html->link(__('Criar novo tipo de questão'), ['controller' => 'QuestionTypes', 'action' => 'add']) ?></li>
         </ul>
     </div>
 </div>
@@ -77,8 +77,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="column">
         <h4>Respostas Padronizadas</h4>
         <ul>
-            <li class = "consulta_lista_resp" ><a href = "../TbListTypes">Consultar/Manipular lista de respostas</a></li>
-            <li><?= $this->Html->link(__('Criar lista de respostas'), ['controller' => 'TbListTypes', 'action' => 'add']) ?></li>
+            <li class = "consulta_lista_resp" ><a href = "../ListTypes">Consultar/Manipular lista de respostas</a></li>
+            <li><?= $this->Html->link(__('Criar lista de respostas'), ['controller' => 'ListTypes', 'action' => 'add']) ?></li>
         </ul>
     </div>
 </div>
@@ -87,8 +87,8 @@ $cakeDescription = 'CakePHP: the rapid development PHP framework';
     <div class="column">
         <h4>Questões</h4>
         <ul>
-            <li class = "nova_questoes" ><a href = "../TbQuestions">Ver questões</a></li>
-            <li><?= $this->Html->link(__('Criar nova questão'), ['controller' => 'TbQuestions', 'action' => 'add']) ?></li>
+            <li class = "nova_questoes" ><a href = "../Questions">Ver questões</a></li>
+            <li><?= $this->Html->link(__('Criar nova questão'), ['controller' => 'Questions', 'action' => 'add']) ?></li>
         </ul>
     </div>
 </div>
