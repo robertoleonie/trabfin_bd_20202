@@ -38,7 +38,7 @@ sudo systemctl restart mysql
 Agora, já é possível aplicar o sql contido no repositório.
 Procure pelo arquivo sqls_script_renomeacao.sh na pasta sqls/ e aplique os scripts renomeados:
 ```sh
-./sqls/script Script_VODAN_BR_BD(ReadsSQLData).sql
+./sqls/sqls_script_renomeacao.sh Script_VODAN_BR_BD(ReadsSQLData).sql
 sudo mysql -u root -p < ./sqls/renomeado_Script_VODAN_BR_BD(ReadsSQLData).sql
 ```
 ### Parte 3: php
