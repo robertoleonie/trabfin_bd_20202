@@ -31,7 +31,7 @@ class QuestionGroupsTable extends Table
         parent::initialize($config);
 
         $this->setTable('question_groups');
-        $this->setDisplayField('question_group_id');
+        $this->setDisplayField('description');
         $this->setPrimaryKey('question_group_id');
     }
 

@@ -33,7 +33,7 @@ class CrfformsTable extends Table
         parent::initialize($config);
 
         $this->setTable('crfforms');
-        $this->setDisplayField('crfform_id');
+        $this->setDisplayField('description');
         $this->setPrimaryKey('crfform_id');
 
         $this->belongsTo('Questionnaires', [

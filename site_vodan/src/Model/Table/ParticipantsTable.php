@@ -31,7 +31,7 @@ class ParticipantsTable extends Table
         parent::initialize($config);
 
         $this->setTable('participants');
-        $this->setDisplayField('participant_id');
+        $this->setDisplayField('description');
         $this->setPrimaryKey('participant_id');
     }
 

@@ -36,7 +36,7 @@ class QuestionGroupsFormsRecordsTable extends Table
         parent::initialize($config);
 
         $this->setTable('question_groups_forms_records');
-        $this->setDisplayField('questionGroupFormRecordID');
+        $this->setDisplayField('answer');
         $this->setPrimaryKey('questionGroupFormRecordID');
 
         $this->belongsTo('FormRecords', [

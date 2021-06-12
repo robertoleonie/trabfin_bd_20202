@@ -5,7 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\Datasource\ConnectionManager;
 /**
  * ListOfValues Model
  *
@@ -75,5 +75,17 @@ class ListOfValuesTable extends Table
         $rules->add($rules->existsIn(['list_type_id'], 'ListTypes'));
 
         return $rules;
+    }
+    /**
+     * Clona a linha
+     * 
+     * @param \App\Model\Table|null Linha a ser clonada
+     */
+    public function clone($listOfValue){
+        $connection = ConnectionManager::get('default');
+        $results = $connection->execute(
+            'INSERT INTO list_of_values (`description`,list_type_id) VALUES (?,?);',
+            [$listOfValue->description,$listOfValue->list_type_id]
+        );
     }
 }

@@ -31,7 +31,7 @@ class QuestionTypesTable extends Table
         parent::initialize($config);
 
         $this->setTable('question_types');
-        $this->setDisplayField('question_type_id');
+        $this->setDisplayField('description');
         $this->setPrimaryKey('question_type_id');
     }
 

@@ -28,11 +28,11 @@
         <legend><?= __('Edit Question') ?></legend>
         <?php
             echo $this->Form->control('description');
-            echo $this->Form->control('question_type_id', ['options' => $questionTypes]);
+            echo $this->Form->control('question_type_id',['options' => $questionTypes]);
             echo $this->Form->control('list_type_id', ['options' => $listTypes, 'empty' => true]);
             echo $this->Form->control('question_group_id', ['options' => $questionGroups, 'empty' => true]);
-            echo $this->Form->control('subordinateTo');
-            echo $this->Form->control('isAbout');
+            echo $this->Form->control('subordinateTo',['options' => $questions, 'empty' => true]);
+            echo $this->Form->control('isAbout',['options' => $questions, 'empty' => true]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>

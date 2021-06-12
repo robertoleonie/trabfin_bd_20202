@@ -26,8 +26,8 @@
                 <td><?= $this->Number->format($questionnaire->questionnaire_id) ?></td>
                 <td><?= h($questionnaire->description) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Consultar'), ['action' => 'view', $questionnaire->questionnaire_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $questionnaire->questionnaire_id]) ?>
+                    <?= $this->Html->link(__('Consult Modules - '), ['action' => 'view', $questionnaire->questionnaire_id]) ?>
+                    <?= $this->Html->link(__('Edit Modules - '), ['action' => 'edit', $questionnaire->questionnaire_id]) ?>
                     <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $questionnaire->questionnaire_id], ['confirm' => __('Are you sure you want to delete # {0}?', $questionnaire->questionnaire_id)]) ?>
                 </td>
             </tr>

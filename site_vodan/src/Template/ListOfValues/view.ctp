@@ -20,7 +20,7 @@
     <table class="vertical-table">
         <tr>
             <th scope="row"><?= __('List Type') ?></th>
-            <td><?= $listOfValue->has('list_type') ? $this->Html->link($listOfValue->list_type->list_type_id, ['controller' => 'ListTypes', 'action' => 'view', $listOfValue->list_type->list_type_id]) : '' ?></td>
+            <td><?= $listOfValue->has('list_type') ? $this->Html->link($listOfValue->list_type->description, ['controller' => 'ListTypes', 'action' => 'view', $listOfValue->list_type->description]) : '' ?></td>
         </tr>
         <tr>
             <th scope="row"><?= __('Description') ?></th>

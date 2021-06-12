@@ -107,4 +107,27 @@ class ListOfValuesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    /**
+     * Clone method
+     *
+     * @param string|null $id List Of Value id.
+     * @param string|null $cloneButtonLocation Página original onde foi requisitado o clone
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function clone($id = null,$wasFromIndex = null){
+        $listOfValue = $this->ListOfValues->get($id,[
+            'contain' => ['ListTypes'],
+        ]);
+        $this->ListOfValues->clone($listOfValue);
+        
+        if(is_null($wasFromIndex)){
+            //significa q a requisição foi chamada de um index
+            return $this->redirect(['action' => 'index']);
+        }else{
+            // Significa que a requisição foi chamada por uma view
+            // de uma tabela pai
+            return $this->redirect(['controller' => 'ListTypes', 'action' => 'view', $listOfValue->list_type->list_type_id]);
+        }
+    }
 }

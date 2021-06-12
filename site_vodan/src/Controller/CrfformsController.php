@@ -23,8 +23,8 @@ class CrfformsController extends AppController
             'contain' => ['Questionnaires'],
         ];
         $crfforms = $this->paginate($this->Crfforms);
-
         $this->set(compact('crfforms'));
+        
     }
 
     /**
@@ -39,8 +39,15 @@ class CrfformsController extends AppController
         $crfform = $this->Crfforms->get($id, [
             'contain' => ['Questionnaires'],
         ]);
-
-        $this->set('crfform', $crfform);
+        //$this->set(compact('crfform'));
+        $this->loadModel('QuestionGroupsForms');
+        $questionGroupsForms = $this->QuestionGroupsForms->find('all',[
+            'conditions' => ['QuestionGroupsForms.crfforms_id = '.$id]
+        ]);
+        $this->loadModel('Questions');
+        $questions = $this->QuestionGroupsForms->find('all')->contain(['Questions']);           
+        
+        $this->set(['crfform' => $crfform,'questionGroupsForms' => $questionGroupsForms,'questions'=>$questions]);
     }
 
     /**

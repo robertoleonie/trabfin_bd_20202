@@ -5,7 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
-
+use Cake\Datasource\ConnectionManager;
 /**
  * ListTypes Model
  *
@@ -31,7 +31,7 @@ class ListTypesTable extends Table
         parent::initialize($config);
 
         $this->setTable('list_types');
-        $this->setDisplayField('list_type_id');
+        $this->setDisplayField('description');
         $this->setPrimaryKey('list_type_id');
     }
 
@@ -54,5 +54,9 @@ class ListTypesTable extends Table
             ->notEmptyString('description');
 
         return $validator;
+    }
+    public function testingquery(){
+        $connection = ConnectionManager::get('default');
+        $results = $connection->query('UPDATE question_types SET description = \'teste_de_update_kkk\' WHERE question_types.question_type_id = 9');
     }
 }

@@ -35,7 +35,7 @@ class QuestionsTable extends Table
         parent::initialize($config);
 
         $this->setTable('questions');
-        $this->setDisplayField('question_id');
+        $this->setDisplayField('description');
         $this->setPrimaryKey('question_id');
 
         $this->belongsTo('QuestionTypes', [

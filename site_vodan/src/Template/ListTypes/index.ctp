@@ -28,7 +28,7 @@
                 <td class="actions">
                     <?= $this->Html->link(__('Open'), ['action' => 'view', $listType->list_type_id]) ?>
                     <?= $this->Html->link(__('Edit'), ['action' => 'edit', $listType->list_type_id]) ?>
-                    
+                    <?= $this->Form->postLink(__('Clone'), ['action' => 'clone', $listType->list_type_id]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

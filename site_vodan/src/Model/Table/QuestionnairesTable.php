@@ -31,7 +31,7 @@ class QuestionnairesTable extends Table
         parent::initialize($config);
 
         $this->setTable('questionnaires');
-        $this->setDisplayField('questionnaire_id');
+        $this->setDisplayField('description');
         $this->setPrimaryKey('questionnaire_id');
     }
 

@@ -36,8 +36,11 @@ class QuestionnairesController extends AppController
         $questionnaire = $this->Questionnaires->get($id, [
             'contain' => [],
         ]);
-
-        $this->set('questionnaire', $questionnaire);
+        $this->loadModel('Crfforms');
+        $crfforms = $this->Crfforms->find('all',[
+            'conditions' => ['Crfforms.questionnaire_id = '.$id]
+        ]);
+        $this->set(['questionnaire' => $questionnaire,'crfforms' => $crfforms]);
     }
 
     /**

@@ -31,7 +31,7 @@ class HospitalUnitsTable extends Table
         parent::initialize($config);
 
         $this->setTable('hospital_units');
-        $this->setDisplayField('hospital_unit_id');
+        $this->setDisplayField('hospitalUnitName');
         $this->setPrimaryKey('hospital_unit_id');
     }
 

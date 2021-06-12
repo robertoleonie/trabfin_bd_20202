@@ -60,10 +60,12 @@ class QuestionsController extends AppController
             }
             $this->Flash->error(__('The question could not be saved. Please, try again.'));
         }
+
+        $questions = $this->Questions->find('list',['limit'=>200]);
         $questionTypes = $this->Questions->QuestionTypes->find('list', ['limit' => 200]);
         $listTypes = $this->Questions->ListTypes->find('list', ['limit' => 200]);
         $questionGroups = $this->Questions->QuestionGroups->find('list', ['limit' => 200]);
-        $this->set(compact('question', 'questionTypes', 'listTypes', 'questionGroups'));
+        $this->set(compact('question', 'questionTypes', 'listTypes', 'questionGroups','questions'));
     }
 
     /**
@@ -87,10 +89,11 @@ class QuestionsController extends AppController
             }
             $this->Flash->error(__('The question could not be saved. Please, try again.'));
         }
+        $questions = $this->Questions->find('list',['limit'=>200]);
         $questionTypes = $this->Questions->QuestionTypes->find('list', ['limit' => 200]);
         $listTypes = $this->Questions->ListTypes->find('list', ['limit' => 200]);
         $questionGroups = $this->Questions->QuestionGroups->find('list', ['limit' => 200]);
-        $this->set(compact('question', 'questionTypes', 'listTypes', 'questionGroups'));
+        $this->set(compact('question', 'questionTypes', 'listTypes', 'questionGroups','questions'));
     }
 
     /**

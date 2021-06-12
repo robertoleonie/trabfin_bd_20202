@@ -48,11 +48,13 @@
             <tbody>
                 <?php foreach ($listOfValues as $listOfValue): ?>
                 <tr>
-                    <td><?= $this->Number->format($listOfValue->list_of_value_id) ?></td>
+                    
+                    <td><?= $this->Html->link(__($listOfValue->list_of_value_id),['controller' => 'ListOfValues', 'action' => 'view', $listOfValue->list_of_value_id]) ?></td>
                     <td><?= h($listOfValue->description) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'),['controller' => 'ListOfValues', 'action' => 'view', $listOfValue->list_of_value_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['controller' => 'ListOfValues','action' => 'edit', $listOfValue->list_of_value_id]) ?>
+                        <?= $this->Form->postLink(__('Clone'), ['controller' => 'ListOfValues','action' => 'clone', $listOfValue->list_of_value_id, true]) ?>
+                       
                     </td>
                 </tr>
                 <?php endforeach; ?>

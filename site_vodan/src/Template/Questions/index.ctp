@@ -36,15 +36,25 @@
             <tr>
                 <td><?= $this->Number->format($question->question_id) ?></td>
                 <td><?= h($question->description) ?></td>
-                <td><?= $question->has('question_type') ? $this->Html->link($question->question_type->question_type_id, ['controller' => 'QuestionTypes', 'action' => 'view', $question->question_type->question_type_id]) : '' ?></td>
-                <td><?= $question->has('list_type') ? $this->Html->link($question->list_type->list_type_id, ['controller' => 'ListTypes', 'action' => 'view', $question->list_type->list_type_id]) : '' ?></td>
-                <td><?= $question->has('question_group') ? $this->Html->link($question->question_group->question_group_id, ['controller' => 'QuestionGroups', 'action' => 'view', $question->question_group->question_group_id]) : '' ?></td>
+                <td><?= $question->has('question_type') ? $this->Html->link($question->question_type->description, ['controller' => 'QuestionTypes', 'action' => 'view', $question->question_type->question_type_id]) : '' ?></td>
+                <td><?= $question->has('list_type') ? $this->Html->link($question->list_type->description, ['controller' => 'ListTypes', 'action' => 'view', $question->list_type->list_type_id]) : '' ?></td>
+                <td><?= $question->has('question_group') ? $this->Html->link($question->question_group->description, ['controller' => 'QuestionGroups', 'action' => 'view', $question->question_group->question_group_id]) : '' ?></td>
                 <td><?= $this->Number->format($question->subordinateTo) ?></td>
                 <td><?= $this->Number->format($question->isAbout) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $question->question_id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $question->question_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $question->question_id], ['confirm' => __('Are you sure you want to delete # {0}?', $question->question_id)]) ?>
+                    <?= $this->Html->link(__('View - '), ['action' => 'view', $question->question_id]) ?>
+                    <?= $this->Html->link(__('Edit - '), ['action' => 'edit', $question->question_id]) ?>
+                    <?= $this->Html->link(__('Clone'),
+                    ['action' => 'add', '?' => array(
+                        'description' => $question->description,
+                        'question_type_id' => $question->has('question_type') ? $question->question_type->question_type_id : '',
+                        'list_type_id' => $question->has('list_type') ? $question->list_type->list_type_id : '',
+                        'question_group_id' => $question->has('question_group') ? $question->question_group->question_group_id : '',
+                        'subordinateTo' => $question->lsubordinateTo,
+                        'isAbout' => $question->isAbout
+                        )
+                    ]); ?>
+                    <?php //echo $this->Form->postLink(__('Delete'), ['action' => 'delete', $question->question_id], ['confirm' => __('Are you sure you want to delete # {0}?', $question->question_id)]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>

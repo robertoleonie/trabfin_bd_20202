@@ -21,12 +21,36 @@
     <fieldset>
         <legend><?= __('Add Question') ?></legend>
         <?php
-            echo $this->Form->control('description');
-            echo $this->Form->control('question_type_id', ['options' => $questionTypes]);
-            echo $this->Form->control('list_type_id', ['options' => $listTypes, 'empty' => true]);
-            echo $this->Form->control('question_group_id', ['options' => $questionGroups, 'empty' => true]);
-            echo $this->Form->control('subordinateTo');
-            echo $this->Form->control('isAbout');
+            if(isset($_GET['description'])){
+                echo $this->Form->control('description', ['value' => $_GET['description']]);
+            }else{
+                echo $this->Form->control('description');
+            }
+            if(isset($_GET['question_type_id'])){
+                echo $this->Form->control('question_type_id', ['options' => $questionTypes, 'value' => $_GET['question_type_id']]);
+            }else{
+                echo $this->Form->control('question_type_id',['options' => $questionTypes]);
+            }
+            if(isset($_GET['list_type_id'])){
+                echo $this->Form->control('list_type_id', ['options' => $listTypes, 'value' => $_GET['list_type_id']]);
+            }else{
+                echo $this->Form->control('list_type_id', ['options' => $listTypes, 'empty' => true]);
+            }
+            if(isset($_GET['question_group_id'])){
+                echo $this->Form->control('question_group_id', ['options' => $listTypes, 'value' => $_GET['question_group_id']]);
+            }else{
+                echo $this->Form->control('question_group_id', ['options' => $questionGroups, 'empty' => true]);
+            }
+            if(isset($_GET['subordinateTo'])){
+                echo $this->Form->control('subordinateTo', ['options' => $listTypes, 'value' => $_GET['subordinateTo']]);
+            }else{
+                echo $this->Form->control('isAbout',['options' => $questions, 'empty' => true]);
+            }
+            if(isset($_GET['isAbout'])){
+                echo $this->Form->control('isAbout', ['options' => $listTypes, 'value' => $_GET['isAbout']]);
+            }else{
+                echo $this->Form->control('subordinateTo',['options' => $questions, 'empty' => true]);
+            }
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
