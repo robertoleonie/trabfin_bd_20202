@@ -51,6 +51,69 @@ EXECUTE stmt;
 
 # COMMIT;
 #===================================
+# Procedure para clonar modulos
+#===================================
+
+DROP PROCEDURE IF EXISTS `ps_clonar_crfform`;
+
+DELIMITER // 
+CREATE PROCEDURE `ps_clonar_crfform`(IN ps_crfform_id INT, IN ps_questionnaire_fk INT) BEGIN
+	DECLARE ps_new_crfform_id INT;
+	DECLARE ps_description VARCHAR(255);
+	DECLARE ps_question_order INT;
+	DECLARE ps_question_id INT;
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE curs_crfform CURSOR FOR SELECT questionOrder,questionID FROM tb_questiongroupform WHERE tb_questiongroupform.crfFormsID = ps_crfform_id; 
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+	SELECT `description` INTO ps_description FROM tb_crfforms WHERE tb_crfforms.crfFormsID = ps_crfform_id;
+	INSERT INTO `tb_crfforms` (`description`,questionnaireID) VALUES(ps_description,ps_questionnaire_fk);
+
+# Clonando valores
+	SELECT LAST_INSERT_ID() INTO ps_new_crfform_id;
+	OPEN curs_crfform;
+	cloning_sons: LOOP
+		FETCH curs_crfform INTO ps_question_order,ps_question_id;
+		IF done THEN
+			LEAVE cloning_sons;
+		END IF;
+		INSERT INTO tb_questiongroupform (crfFormsID,questionID,questionOrder) VALUES(ps_new_crfform_id,ps_question_id,ps_question_order);
+	END LOOP;
+	CLOSE curs_crfform;
+END //
+DELIMITER ;
+
+#===================================
 # Procedure para clonar questionnaires
 #===================================
+
+DROP PROCEDURE IF EXISTS `ps_clonar_questionnaire`;
+
+DELIMITER // 
+CREATE PROCEDURE `ps_clonar_questionnaire`(IN ps_questionnaire_id INT) BEGIN
+	DECLARE ps_new_questionnaire_id INT;
+	DECLARE ps_crfform_id INT;
+	DECLARE ps_version INT;
+	DECLARE ps_description VARCHAR(255);
+	DECLARE done INT DEFAULT FALSE;
+	DECLARE curs_crfform CURSOR FOR SELECT `crfFormsID` FROM tb_crfforms WHERE tb_crfforms.questionnaireID = ps_questionnaire_id; 
+	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+	SELECT `version`,`description` INTO ps_version,ps_description FROM tb_questionnaire WHERE tb_questionnaire.questionnaireID = ps_questionnaire_id;
+	SET ps_version = ps_version + 1;
+	INSERT INTO `tb_questionnaire` (`description`,`version`) VALUES(ps_description,ps_version);
+
+# Clonando filhos
+	SELECT LAST_INSERT_ID() INTO ps_new_questionnaire_id;
+	OPEN curs_crfform;
+	cloning_sons: LOOP
+		FETCH curs_crfform INTO ps_crfform_id;
+		IF done THEN
+			LEAVE cloning_sons;
+		END IF;
+		Call ps_clonar_crfform(ps_crfform_id,ps_new_questionnaire_id);
+	END LOOP;
+	CLOSE curs_crfform;
+END //
+DELIMITER ;
 
