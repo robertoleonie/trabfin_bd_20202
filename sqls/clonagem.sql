@@ -1,9 +1,9 @@
 #===================================
 # Procedure para clonar lista de respostas
-#====================================
+#===================================
 
-START TRANSACTION;
-
+# START TRANSACTION;
+SET @_db_name = 'vodan_original';
 DROP PROCEDURE IF EXISTS `ps_clonar_listtype`;
 
 DELIMITER // 
@@ -30,4 +30,27 @@ CREATE PROCEDURE `ps_clonar_listtype`(IN ps_list_type_id INT) BEGIN
 	CLOSE curs_list_of_value;
 END //
 DELIMITER ;
-COMMIT;
+
+
+#===================================
+# Comando para adicionar coluna versoes ao questionnaires
+#===================================
+
+SET @sql = (SELECT IF(
+	(SELECT COUNT(*)
+		FROM INFORMATION_SCHEMA.COLUMNS WHERE
+		table_schema= @_db_name
+		AND table_name='tb_questionnaire' AND column_name='version'
+	) > 0,
+	"SELECT 'version column exists already'",
+	"ALTER TABLE tb_questionnaire ADD COLUMN `version` INT NOT NULL DEFAULT 1;"
+));
+
+PREPARE stmt FROM @sql;
+EXECUTE stmt;
+
+# COMMIT;
+#===================================
+# Procedure para clonar questionnaires
+#===================================
+
