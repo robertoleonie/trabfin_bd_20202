@@ -3,7 +3,7 @@
 #===================================
 
 # START TRANSACTION;
-SET @_db_name = 'vodan_original';
+SET @_db_name = 'vodan_br_bd';
 DROP PROCEDURE IF EXISTS `ps_clonar_listtype`;
 
 DELIMITER // 
