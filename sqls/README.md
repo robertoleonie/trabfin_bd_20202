@@ -1,4 +1,21 @@
+
+### Resumo dos arquivos
+##### SQLs_Integradas.sql
+Possui as procedures essenciais para clonar algumas tabelas e as relacionadas a ela. Insere uma coluna de versão no questionario que deve ser aumentada sempre que o usuário cloná-la. Possui também procedure pra deleção de questionário. Tudo relativamente auto-explicativo.
+##### arquivo.sql
+Possui atualizações necessárias para rodar o Script original no windows, possui também as relações para as tabelas.
+##### sqls_script_renomacao.sh
+Usado para renomear todas tabelas e colunas identificadoras de qualquer script, para adequar-se a nomenclatura do cake.
+***
+##### query_relacionamento.sql
+Arquivo mais antigo que foi usado para fazer as relações entre as tabelas
+##### dump
+Arquivo mais antigo, usado para rodar no windwos também. Não possui tanta diferença ao Script original
 -- Inserção das novas perguntas do questionário:
+***
+##### Text_Gestão_de_Questões
+Texto contendo a adequação para a criação dos modulos e para as inserções dos formulários
+
 ```
 INSERT INTO `tb_questions` (`questionID`, `description`, `questionTypeID`, `listTypeID`, `questionGroupID`, `subordinateTo`, `isAbout`) VALUES 
 (256, 'Recebeu a Vacina covid - 19', 1, 3, 9, 44, NULL ), 
@@ -15,7 +32,7 @@ INSERT INTO `tb_QuestionGroup` (`questionGroupID`, `description`, `comment`) VAL
 (15, 'Tomou Vacina', 'O paciente tomou algumas das doses da vacina'), 
 (16,  'Dados do Laboratorio',  'NULL' ); 
 ```
--- Definindo a ordem das novas questões no formuçário:
+-- Definindo a ordem das novas questões no formulário:
 ```
 INSERT INTO `tb_questiongroupform` (`crfFormsID`, `questionID`, `questionOrder`) VALUES 
 (1,256, 10924), 
@@ -25,15 +42,3 @@ INSERT INTO `tb_questiongroupform` (`crfFormsID`, `questionID`, `questionOrder`)
 (1, 260, 10928), 
 (1, 261, 10929);
 ```
-### Resumo dos arquivos
-##### SQLs_Integradas.sql
-Possui as procedures essenciais para clonar algumas tabelas e as relacionadas a ela. Insere uma coluna de versão no questionario que deve ser aumentada sempre que o usuário cloná-la. Possui também procedure pra deleção de questionário. Tudo relativamente auto-explicativo.
-##### arquivo.sql
-Possui atualizações necessárias para rodar o Script original no windows, possui também as relações para as tabelas.
-##### sqls_script_renomacao.sh
-Usado para renomear todas tabelas e colunas identificadoras de qualquer script, para adequar-se a nomenclatura do cake.
-***
-##### query_relacionamento.sql
-Arquivo mais antigo que foi usado para fazer as relações entre as tabelas
-##### dump
-Arquivo mais antigo, usado para rodar no windwos também. Não possui tanta diferença ao Script original
