@@ -21,7 +21,7 @@ Depois, é necessário ativar os:
 ```sh
 sudo systemctl start apache2.service
 ```
-## Parte 2: mysql
+### Parte 2: mysql
 Para ver se o apache HTTP está instalado, basta pesquisar pelo [localhost](http://locahost) no navegador
 Depois, é necessária a instalação do mysql
 ```sh
@@ -39,7 +39,9 @@ Agora, já é possível aplicar o sql contido no repositório.
 Procure pelo arquivo sqls_script_renomeacao.sh na pasta sqls/ e aplique os scripts renomeados:
 ```sh
 ./sqls/sqls_script_renomeacao.sh Script_VODAN_BR_BD(ReadsSQLData).sql
+./sqls/sqls_script_renomeacao.sh SQLs_Integradas.sql
 sudo mysql -u root -p < ./sqls/renomeado_Script_VODAN_BR_BD(ReadsSQLData).sql
+sudo mysql -u root -p < ./sqls/renomeado_SQLs_Integradas.sql
 ```
 ### Parte 3: php
 Aplique os repositórios
@@ -79,12 +81,18 @@ Mas antes, no arquivo site_vodan/config/app_local.php, coloquem o login e senha 
 O root é aceito:
 ![Exemplo de login e senha no app_local.php](https://user-images.githubusercontent.com/51456769/121438851-25e67800-c95b-11eb-9ab6-560686b531b7.png)
 
+Precisamos agora instalar o [composer](http://localhost/index.php), ele é apenas necessário para construir a estrutura de arquivos.
+O site do composer literalmente me manda não compartilhar o comando de instalação devido à constante mudança do script, então é necessário entrar no site e pegar o código atualizado lá. Quando o composer estiver instalado, execute o comando:
+```sh
+composer create-project --prefer-dist cakephp/app:^3.9 diretorio/bem/legal
+```
+Agora a parte mais importante, depois de clonar o repositório, substitua os arquivos do 'diretorio/bem/legal' pelos arquivos do repositório:
+```sh
+cp -r ./site_vodan/ diretorio/bem/legal # o src/ do site_vodan deve ser o mesmo do src/ do diretorio legal
+```
+Isso fara com que os arquivos essenciais do cake rodem os arquivos essenciais do site
 Depois disso, basta executar o arquivo cake. Dentro da pasta do repositório:
 ```sh
 ./bin/cake server
 ```
 O site será então iniciado, e poderá ser acessado com o endereço https://localhost:8765
-
-## Instalação Windows
-Acredito que o wampserver e o xampp possuam dentro do seus diretórios, a maioria dos arquivos necessários.
-![por favor expanda o README](https://user-images.githubusercontent.com/51456769/121438939-49112780-c95b-11eb-86a4-96ce9eda08e1.png)
