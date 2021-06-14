@@ -90,7 +90,7 @@ Agora a parte mais importante, depois de clonar o repositório, substitua os arq
 ```sh
 cp -r ./site_vodan/ diretorio/bem/legal # o src/ do site_vodan deve ser o mesmo do src/ do diretorio legal
 ```
-Isso fara com que os arquivos essenciais do cake rodem os arquivos essenciais do site
+Isso fara com que os arquivos essenciais do cake rodem os arquivos essenciais do site.
 Depois disso, basta executar o arquivo cake. Dentro da pasta do repositório:
 ```sh
 ./bin/cake server
