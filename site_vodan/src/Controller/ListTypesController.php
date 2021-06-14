@@ -111,9 +111,9 @@ class ListTypesController extends AppController
     }
     
     public function clone($id = null){
-        //$this->ListTypes->testingquery();
-        //$connection = ConnectionManager::get('default');
-        //$results = $connection->query('UPDATE list_types SET description = \'teste_de_update_kkk\' WHERE list_types.list_type_id = 10');
+        if(!is_null($id)){
+        $this->ListTypes->clone($id);
+        }
         
         return $this->redirect(['action' => 'index']);
     }

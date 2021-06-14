@@ -11,6 +11,7 @@
         <li><?= $this->Form->postLink(__('Delete Questionnaire'), ['action' => 'delete', $questionnaire->questionnaire_id], ['confirm' => __('Are you sure you want to delete # {0}?', $questionnaire->questionnaire_id)]) ?> </li>
         <li><?= $this->Html->link(__('List Questionnaires'), ['action' => 'index']) ?> </li>
         <li><?= $this->Html->link(__('New Questionnaire'), ['action' => 'add']) ?> </li>
+        <li> <?= $this->Html->link(__('Clone this questionnaire'), ['action' => 'clone', $questionnaire->questionnaire_id]) ?></li>
     </ul>
 </nav>
 <div class="questionnaires view large-9 medium-8 columns content">
@@ -34,6 +35,7 @@
                 <?= $this->Html->link(__('New Module'), 
                 ['controller' => 'Crfforms', 'action' => 'add', '?' => array('questionnaire' => $questionnaire->questionnaire_id) ],
                 ['class' => 'button right']) ?>
+                
                 
             </div>
         </div>

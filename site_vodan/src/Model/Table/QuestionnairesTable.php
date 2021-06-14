@@ -5,6 +5,7 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * Questionnaires Model
@@ -54,5 +55,22 @@ class QuestionnairesTable extends Table
             ->notEmptyString('description');
 
         return $validator;
+    }
+
+    public function deletar($id = null){
+        
+        $connection = ConnectionManager::get('default');
+        $connection->begin();
+        $connection->execute('CALL ps_deletar_questionnaire(?,@sucesso);', [$id]);
+        $row = $connection->execute('SELECT @sucesso')->fetch('assoc');
+        $connection->commit();
+        return $row['@sucesso'];
+    }
+    public function clone($id = null){
+        $connection = ConnectionManager::get('default');
+        $row = $connection->execute(
+            'CALL ps_clonar_questionnaire(?);',
+            [$id]
+        );
     }
 }

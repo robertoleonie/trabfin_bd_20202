@@ -16,6 +16,7 @@
         <thead>
             <tr>
                 <th scope="col"><?= $this->Paginator->sort('questionnaire_id') ?></th>
+                <th scope="col"><?= $this->Paginator->sort('version') ?></th>
                 <th scope="col"><?= $this->Paginator->sort('description') ?></th>
                 <th scope="col" class="actions"><?= __('Actions') ?></th>
             </tr>
@@ -24,11 +25,12 @@
             <?php foreach ($questionnaires as $questionnaire): ?>
             <tr>
                 <td><?= $this->Number->format($questionnaire->questionnaire_id) ?></td>
+                <td><?= $this->Number->format($questionnaire->version) ?></td>
                 <td><?= h($questionnaire->description) ?></td>
                 <td class="actions">
-                    <?= $this->Html->link(__('Consult Modules - '), ['action' => 'view', $questionnaire->questionnaire_id]) ?>
-                    <?= $this->Html->link(__('Edit Modules - '), ['action' => 'edit', $questionnaire->questionnaire_id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $questionnaire->questionnaire_id], ['confirm' => __('Are you sure you want to delete # {0}?', $questionnaire->questionnaire_id)]) ?>
+                    <?= $this->Html->link(__('Clone - '), ['action' => 'clone', $questionnaire->questionnaire_id]) ?>
+                    <?= $this->Html->link(__('Consult - '), ['action' => 'view', $questionnaire->questionnaire_id]) ?>
+                    <?= $this->Html->link(__('Delete'), ['action' => 'deletar', $questionnaire->questionnaire_id]) ?>
                 </td>
             </tr>
             <?php endforeach; ?>
@@ -44,4 +46,13 @@
         </ul>
         <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
     </div>
+    <?php 
+    if(isset($_GET['row'])){
+        if($_GET['row'] == '0'){
+            echo 'The questionnaire was deleted';
+        }else if($_GET['row'] == '1'){
+            echo 'The questionnaire could not be deleted, it already has associated records. Try cloning it or adding a new one';
+        }
+    }   
+    ?>
 </div>

@@ -68,9 +68,8 @@
                     <td><?= $this->Number->format($question->subordinateTo) ?></td>
                     <td><?= $this->Number->format($question->isAbout) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $question->question_id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $question->question_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $question->question_id], ['confirm' => __('Are you sure you want to delete # {0}?', $question->question_id)]) ?>
+                        <?= $this->Html->link(__('View'), ['controller' => 'questions', 'action' => 'view', $question->question_id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['controller' => 'questions','action' => 'edit', $question->question_id]) ?>
                     </td>
                 </tr>
                 <?php endforeach; ?>

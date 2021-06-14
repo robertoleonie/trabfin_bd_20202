@@ -23,6 +23,21 @@ class QuestionTypesController extends AppController
 
         $this->set(compact('questionTypes'));
     }
+    /**
+     * View method
+     *
+     * @param string|null $id Question id.
+     * @return \Cake\Http\Response|null
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view($id = null)
+    {
+        $questionType = $this->QuestionTypes->get($id, [
+            'contain' => [],
+        ]);
+
+        $this->set(compact('questionType'));
+    }
 
     /**
      * Add method

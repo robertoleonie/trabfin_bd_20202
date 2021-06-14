@@ -56,7 +56,7 @@ class QuestionnairesController extends AppController
             if ($this->Questionnaires->save($questionnaire)) {
                 $this->Flash->success(__('The questionnaire has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $questionnaire->questionnaire_id]);
             }
             $this->Flash->error(__('The questionnaire could not be saved. Please, try again.'));
         }
@@ -80,7 +80,7 @@ class QuestionnairesController extends AppController
             if ($this->Questionnaires->save($questionnaire)) {
                 $this->Flash->success(__('The questionnaire has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $id]);
             }
             $this->Flash->error(__('The questionnaire could not be saved. Please, try again.'));
         }
@@ -88,22 +88,34 @@ class QuestionnairesController extends AppController
     }
 
     /**
-     * Delete method
+     * Deletar method
      *
      * @param string|null $id Questionnaire id.
      * @return \Cake\Http\Response|null Redirects to index.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function delete($id = null)
+    public function deletar($id = null)
     {
-        $this->request->allowMethod(['post', 'delete']);
-        $questionnaire = $this->Questionnaires->get($id);
-        if ($this->Questionnaires->delete($questionnaire)) {
-            $this->Flash->success(__('The questionnaire has been deleted.'));
-        } else {
-            $this->Flash->error(__('The questionnaire could not be deleted. Please, try again.'));
-        }
-
+        
+        $row = $this->Questionnaires->deletar($id);
+        if($row[0] == '0'){
+            $this->Flash->error(__('The questionnaire could not be deleted, it already has associated records. Try cloning it or adding a new one.'));
+        } else if ($row[0] == '1'){
+            $this->Flash->success(__('The questionnaire was deleted.'));
+        }   
+        return $this->redirect(['action' => 'index']);
+    }
+    /**
+     * Clone method
+     *
+     * @param string|null $id List Of Value id.
+     * @param string|null $cloneButtonLocation Página original onde foi requisitado o clone
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function clone($id = null){
+        if(!is_null($id))
+            $this->Questionnaires->clone($id);
         return $this->redirect(['action' => 'index']);
     }
 }

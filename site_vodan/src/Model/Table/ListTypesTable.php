@@ -55,8 +55,11 @@ class ListTypesTable extends Table
 
         return $validator;
     }
-    public function testingquery(){
+    public function clone($id){
         $connection = ConnectionManager::get('default');
-        $results = $connection->query('UPDATE question_types SET description = \'teste_de_update_kkk\' WHERE question_types.question_type_id = 9');
+        $connection->execute(
+            'CALL ps_clonar_listtype(?)',
+            [$id]
+        );
     }
 }
