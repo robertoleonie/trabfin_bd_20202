@@ -5,7 +5,7 @@ Possui as procedures essenciais para clonar algumas tabelas e as relacionadas a 
 ##### arquivo.sql
 Possui atualizações necessárias para rodar o Script original no windows, possui também as relações para as tabelas.
 ##### sqls_script_renomacao.sh
-Usado para renomear todas tabelas e colunas identificadoras de qualquer script, para adequar-se a nomenclatura do cake.
+Usado para renomear todas tabelas e colunas identificadoras de qualquer script, para adequar-se a [nomenclatura do cake](https://book.cakephp.org/3/en/intro/conventions.html).
 ***
 ##### query_relacionamento.sql
 Arquivo mais antigo que foi usado para fazer as relações entre as tabelas
